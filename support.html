@@ -230,7 +230,7 @@
         const submitBtn = document.getElementById('submitBtn');
         const successMessage = document.getElementById('successMessage');
 
-        // Email validation regex
+        // Email validation - rely on HTML5 validation and basic check
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         // Validate individual field
@@ -299,7 +299,7 @@
                     throw new Error('Form submission failed');
                 }
             } catch (error) {
-                alert('There was an error submitting the form. Please try again or contact us directly at alpalkim@gmail.com');
+                alert('There was an error submitting the form. Please try again later.');
                 console.error('Form submission error:', error);
             } finally {
                 // Re-enable submit button
