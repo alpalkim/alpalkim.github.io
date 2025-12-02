@@ -1,0 +1,23 @@
+# Netlify Configuration
+[build]
+  publish = "."
+
+# Form submissions settings
+[build.processing]
+  skip_processing = false
+
+# Headers for security
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Redirect rules (optional - if you want www to redirect to non-www)
+[[redirects]]
+  from = "https://www.alpalkim.github.io/*"
+  to = "https://alpalkim.github.io/:splat"
+  status = 301
+  force = true
