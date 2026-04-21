@@ -220,6 +220,16 @@
             transform: translateY(0);
         }
 
+        .status-pill {
+            display: inline-block;
+            background: rgba(124, 154, 255, 0.16);
+            color: #dfe6ff;
+            border: 1px solid rgba(124, 154, 255, 0.35);
+            border-radius: 999px;
+            font-size: 0.8rem;
+            padding: 4px 10px;
+        }
+
         .socials {
             display: flex;
             gap: 10px;
@@ -376,7 +386,7 @@
                             '<h3>' + (game.title || "Untitled Game") + '</h3>',
                             '<p>' + (game.description || "") + '</p>',
                             '<div class="tags">' + tags + '</div>',
-                            '<div class="game-links">' + (linkHtml || '<span class="tag">Link coming soon</span>') + '</div>',
+                            '<div class="game-links">' + (linkHtml || '<span class="status-pill">Link coming soon</span>') + '</div>',
                         '</div>',
                     '</article>'
                 ].join("");
@@ -385,7 +395,7 @@
             fetch("/data/games.json")
                 .then(function (res) {
                     if (!res.ok) {
-                        throw new Error("Games data could not be loaded");
+                        throw new Error("Games data could not be loaded (HTTP " + res.status + ")");
                     }
                     return res.json();
                 })
@@ -395,8 +405,8 @@
                     }
                     grid.innerHTML = games.map(gameCardTemplate).join("");
                 })
-                .catch(function () {
-                    grid.innerHTML = '<div class="panel">Could not load games right now. Please try again later.</div>';
+                .catch(function (error) {
+                    grid.innerHTML = '<div class="panel">Could not load games right now. ' + (error && error.message ? error.message : 'Please try again later.') + '</div>';
                 });
 
             const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

@@ -44,7 +44,7 @@ Edit `/data/games.json` and update each game object:
   - `itch`: itch.io page
   - `steam`: Steam page
 
-Use `"#"` or empty values for unavailable links.
+Use empty values (`""`) for unavailable links.
 
 ## Deployment
 
