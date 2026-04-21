@@ -1,98 +1,424 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>ALP ALKIM</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ALP ALKIM | Game Developer Portfolio</title>
+    <meta name="description" content="ALP ALKIM's portfolio featuring games, skills and contact links." />
+    <meta name="theme-color" content="#0b1120" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="ALP ALKIM | Game Developer Portfolio" />
+    <meta property="og:description" content="Explore games, tech stack and contact information." />
+    <meta property="og:url" content="https://alpalkim.github.io/" />
+    <meta property="og:site_name" content="ALP ALKIM" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ALP ALKIM | Game Developer Portfolio" />
+    <meta name="twitter:description" content="Explore games, tech stack and contact information." />
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --bg: #070b16;
+            --surface: #121a2d;
+            --surface-elevated: #1a243d;
+            --text: #f5f7ff;
+            --muted: #b6c0de;
+            --accent: #7c9aff;
+            --accent-2: #48d6c6;
+            --border: rgba(255, 255, 255, 0.12);
+            --container: 1120px;
+            --radius: 18px;
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
         }
 
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
         body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            margin: 0;
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 10% 10%, rgba(124, 154, 255, 0.18), transparent 30%),
+                radial-gradient(circle at 90% 20%, rgba(72, 214, 198, 0.14), transparent 25%),
+                var(--bg);
+            line-height: 1.55;
+        }
+
+        a { color: inherit; }
+
+        .container {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            background: rgba(7, 11, 22, 0.7);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav {
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+            gap: 14px;
+        }
+
+        .brand { font-weight: 700; letter-spacing: 0.04em; }
+
+        .nav-links {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+            color: var(--muted);
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            padding: 8px 10px;
+            border-radius: 10px;
+            transition: background-color 0.2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            background: rgba(124, 154, 255, 0.16);
+            color: var(--text);
+            outline: none;
+        }
+
+        main { padding-bottom: 60px; }
+
+        section { padding: 70px 0 0; }
+
+        .hero {
+            padding-top: 44px;
+            animation: fade-up 0.7s ease both;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin: 0;
+        }
+
+        .hero p {
+            margin: 14px 0 0;
+            color: var(--muted);
+            max-width: 68ch;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            margin: 0 0 18px;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 18px;
+        }
+
+        .card {
+            background: linear-gradient(160deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transform: translateY(0);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .card:hover,
+        .card:focus-within {
+            transform: translateY(-6px);
+            border-color: rgba(124, 154, 255, 0.45);
+            box-shadow: 0 24px 44px rgba(9, 15, 30, 0.6);
+        }
+
+        .game-image {
+            aspect-ratio: 16 / 9;
+            width: 100%;
+            object-fit: cover;
+            display: block;
+            background: linear-gradient(140deg, #233155, #0f172c);
+        }
+
+        .card-body { padding: 16px; }
+
+        .card h3 { margin: 0 0 8px; font-size: 1.1rem; }
+
+        .card p { margin: 0 0 12px; color: var(--muted); font-size: 0.96rem; }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .tag {
+            background: rgba(72, 214, 198, 0.16);
+            color: #d6fff8;
+            border: 1px solid rgba(72, 214, 198, 0.35);
+            border-radius: 999px;
+            font-size: 0.8rem;
+            padding: 4px 10px;
+        }
+
+        .game-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .button {
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            font-size: 0.85rem;
+            background: rgba(124, 154, 255, 0.1);
+            transition: background-color 0.2s ease;
+        }
+
+        .button:hover,
+        .button:focus-visible {
+            background: rgba(124, 154, 255, 0.24);
+            outline: none;
+        }
+
+        .panel {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
             padding: 20px;
         }
 
-        .container {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            padding: 60px 40px;
-            max-width: 600px;
-            width: 100%;
-            text-align: center;
-        }
-
-        h1 {
-            color: #333;
-            margin-bottom: 15px;
-            font-size: 48px;
-        }
-
-        .subtitle {
-            color: #666;
-            margin-bottom: 40px;
-            font-size: 18px;
-        }
-
-        .links {
+        .skills {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
-        a {
-            display: block;
-            padding: 15px 30px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
         }
 
-        a:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
-        }
-
-        a:active {
+        .reveal.is-visible {
+            opacity: 1;
             transform: translateY(0);
         }
 
+        .socials {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .footer {
+            padding: 28px 0 42px;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        @keyframes fade-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         @media (max-width: 768px) {
-            .container {
-                padding: 40px 25px;
-            }
+            .nav { align-items: flex-start; flex-direction: column; }
+            section { padding-top: 56px; }
+        }
 
-            h1 {
-                font-size: 36px;
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
             }
-
-            .subtitle {
-                font-size: 16px;
-            }
+            .reveal { opacity: 1; transform: none; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>ALP ALKIM</h1>
-        <p class="subtitle">Welcome to my personal page</p>
-        
-        <div class="links">
-            <a href="/support.html">Contact & Support</a>
+    <header>
+        <div class="container nav">
+            <div class="brand">ALP ALKIM</div>
+            <nav class="nav-links" aria-label="Main navigation">
+                <a href="#games">Games</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
         </div>
-    </div>
+    </header>
+
+    <main class="container">
+        <section class="hero" aria-labelledby="hero-title">
+            <h1 id="hero-title">Game Developer Portfolio</h1>
+            <p>
+                I build engaging, polished game experiences. Discover featured games below and explore
+                my tech stack, projects and contact links.
+            </p>
+        </section>
+
+        <section id="games" class="reveal" aria-labelledby="games-title">
+            <h2 id="games-title" class="section-title">Featured Games</h2>
+            <div id="games-grid" class="games-grid" aria-live="polite"></div>
+        </section>
+
+        <section id="about" class="reveal" aria-labelledby="about-title">
+            <h2 id="about-title" class="section-title">About Me</h2>
+            <div class="panel">
+                <p>
+                    I focus on gameplay feel, smooth UX and maintainable development workflows. My goal is to ship games
+                    that are fun, performant and player-friendly.
+                </p>
+            </div>
+        </section>
+
+        <section id="skills" class="reveal" aria-labelledby="skills-title">
+            <h2 id="skills-title" class="section-title">Tech Stack</h2>
+            <div class="panel skills">
+                <span class="tag">Unity</span>
+                <span class="tag">C#</span>
+                <span class="tag">Mobile Optimization</span>
+                <span class="tag">UI/UX</span>
+                <span class="tag">Git & CI</span>
+            </div>
+        </section>
+
+        <section id="projects" class="reveal" aria-labelledby="projects-title">
+            <h2 id="projects-title" class="section-title">Other Projects</h2>
+            <div class="panel">
+                <p>You can also find support and policy pages for published apps:</p>
+                <div class="socials">
+                    <a class="button" href="/support.html">Support</a>
+                    <a class="button" href="/scoreblastprivacypolicy.html">Score Blaster Privacy Policy</a>
+                    <a class="button" href="/privacy-policy/word-reveal.html">Word Reveal Privacy Policy</a>
+                    <a class="button" href="/privacy-policy/puzzle-hero-buddies.html">Puzzle Hero Buddies Privacy Policy</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="reveal" aria-labelledby="contact-title">
+            <h2 id="contact-title" class="section-title">Contact & Social</h2>
+            <div class="panel">
+                <p>For business inquiries or support, contact me via email or social profiles.</p>
+                <div class="socials">
+                    <a class="button" href="mailto:alpalkim@gmail.com">Email</a>
+                    <a class="button" href="https://github.com/alpalkim" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a class="button" href="/support.html">Support Form</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="container footer">
+        © <span id="year"></span> ALP ALKIM. Built for GitHub Pages.
+    </footer>
+
+    <script>
+        (function () {
+            const grid = document.getElementById("games-grid");
+            const year = document.getElementById("year");
+            year.textContent = new Date().getFullYear();
+
+            const linkLabels = {
+                play: "Play / Download",
+                github: "GitHub",
+                itch: "itch.io",
+                steam: "Steam"
+            };
+
+            function safeUrl(value) {
+                if (!value || value === "#") return "";
+                const trimmed = String(value).trim();
+                return /^https?:\/\//i.test(trimmed) || trimmed.startsWith("/") ? trimmed : "";
+            }
+
+            function gameCardTemplate(game) {
+                const tech = Array.isArray(game.tech) ? game.tech : [];
+                const links = game.links && typeof game.links === "object" ? game.links : {};
+                const image = safeUrl(game.image);
+
+                const tags = tech.map(function (item) {
+                    return '<span class="tag">' + item + '</span>';
+                }).join("");
+
+                const linkHtml = Object.keys(linkLabels).map(function (key) {
+                    const href = safeUrl(links[key]);
+                    if (!href) return "";
+                    const external = href.startsWith("http");
+                    const attrs = external ? ' target="_blank" rel="noopener noreferrer"' : "";
+                    return '<a class="button" href="' + href + '"' + attrs + '>' + linkLabels[key] + '</a>';
+                }).join("");
+
+                return [
+                    '<article class="card" tabindex="0">',
+                        image
+                            ? '<img class="game-image" src="' + image + '" alt="' + (game.title || "Game") + ' cover" loading="lazy" />'
+                            : '<div class="game-image" role="img" aria-label="Placeholder image for ' + (game.title || "game") + '"></div>',
+                        '<div class="card-body">',
+                            '<h3>' + (game.title || "Untitled Game") + '</h3>',
+                            '<p>' + (game.description || "") + '</p>',
+                            '<div class="tags">' + tags + '</div>',
+                            '<div class="game-links">' + (linkHtml || '<span class="tag">Link coming soon</span>') + '</div>',
+                        '</div>',
+                    '</article>'
+                ].join("");
+            }
+
+            fetch("/data/games.json")
+                .then(function (res) {
+                    if (!res.ok) {
+                        throw new Error("Games data could not be loaded");
+                    }
+                    return res.json();
+                })
+                .then(function (games) {
+                    if (!Array.isArray(games)) {
+                        throw new Error("Invalid games data");
+                    }
+                    grid.innerHTML = games.map(gameCardTemplate).join("");
+                })
+                .catch(function () {
+                    grid.innerHTML = '<div class="panel">Could not load games right now. Please try again later.</div>';
+                });
+
+            const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            if (!reducedMotion && "IntersectionObserver" in window) {
+                const observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("is-visible");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.2 });
+
+                document.querySelectorAll(".reveal").forEach(function (el) {
+                    observer.observe(el);
+                });
+            } else {
+                document.querySelectorAll(".reveal").forEach(function (el) {
+                    el.classList.add("is-visible");
+                });
+            }
+        })();
+    </script>
 </body>
 </html>

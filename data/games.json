@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Score Blaster",
+    "description": "Fast-paced arcade shooter with combo mechanics and increasing difficulty.",
+    "tech": ["Unity", "C#", "Mobile"],
+    "image": "",
+    "links": {
+      "play": "#",
+      "github": "#",
+      "itch": "#",
+      "steam": "#"
+    }
+  },
+  {
+    "title": "Word Reveal",
+    "description": "Word puzzle experience focused on discovery, pattern matching and short sessions.",
+    "tech": ["Unity", "Puzzle", "iOS/Android"],
+    "image": "",
+    "links": {
+      "play": "#",
+      "github": "#",
+      "itch": "#",
+      "steam": "#"
+    }
+  },
+  {
+    "title": "Puzzle Hero Buddies",
+    "description": "Casual puzzle game with hero collection and progression systems.",
+    "tech": ["Unity", "2D", "Free-to-Play"],
+    "image": "",
+    "links": {
+      "play": "#",
+      "github": "#",
+      "itch": "#",
+      "steam": "#"
+    }
+  }
+]

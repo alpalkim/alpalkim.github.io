@@ -1,30 +1,57 @@
 # alpalkim.github.io
 
-Personal website for ALP ALKIM
+Personal website for ALP ALKIM.
 
-## Pages
+## Site Structure
 
-- **Privacy Policy**: `/scoreblastprivacypolicy.html` - Privacy policy for Score Blaster app
-- **Support/Contact**: `/support.html` - Contact form for support requests and inquiries
+- **Homepage Portfolio**: `/index.html`
+  - Modern responsive portfolio layout
+  - Animated sections (with `prefers-reduced-motion` support)
+  - Featured games section rendered from JSON data
+- **Games Data Source**: `/data/games.json`
+  - Manage game cards from a single file
+- **Support/Contact**: `/support.html`
+- **Privacy Policy**:
+  - `/scoreblastprivacypolicy.html`
+  - `/privacy-policy/word-reveal.html`
+  - `/privacy-policy/puzzle-hero-buddies.html`
+
+## Local Development
+
+No build step is required (vanilla HTML/CSS/JS).
+
+Run a local server from the repository root:
+
+```bash
+python3 -m http.server 8080
+```
+
+Then open: `http://localhost:8080`
+
+> Note: A local server is recommended because homepage game cards are loaded via `fetch('/data/games.json')`.
+
+## Updating Game List
+
+Edit `/data/games.json` and update each game object:
+
+- `title`: Game name
+- `description`: Short summary
+- `tech`: Array of engine/technology tags
+- `image`: Image URL (absolute `https://...` or site-relative `/...`), leave empty for placeholder
+- `links`:
+  - `play`: Play/Download link
+  - `github`: Repository link
+  - `itch`: itch.io page
+  - `steam`: Steam page
+
+Use `"#"` or empty values for unavailable links.
 
 ## Deployment
 
-This site is designed to be deployed on GitHub Pages with Netlify Forms integration for the contact form.
+This site is compatible with GitHub Pages (static files, no build required).
 
-### Setting up Netlify Forms
+For Netlify Forms integration on `/support.html`:
 
-To enable the contact form at `/support.html`:
-
-1. Deploy the site to Netlify or configure it with GitHub Pages + Netlify
-2. Netlify will automatically detect forms with the `data-netlify="true"` attribute
-3. Configure email notifications in your Netlify dashboard:
-   - Go to Settings → Forms
-   - Add the notification email address (alpalkim@gmail.com)
-   - Enable spam filtering and reCAPTCHA
-
-The form includes:
-- Spam protection with honeypot field
-- reCAPTCHA integration
-- Client-side validation
-- Mobile-responsive design
-
+1. Deploy to Netlify (or configure GitHub Pages + Netlify)
+2. Netlify detects forms with `data-netlify="true"`
+3. Configure email notifications in Netlify dashboard
