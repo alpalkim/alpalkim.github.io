@@ -380,7 +380,7 @@
                 return [
                     '<article class="card" tabindex="0">',
                         image
-                            ? '<img class="game-image" src="' + image + '" alt="' + (game.title || "Game") + ' cover" loading="lazy" />'
+                            ? '<img class="game-image" src="' + image + '" alt="' + (game.title || "game") + ' cover" loading="lazy" />'
                             : '<div class="game-image" role="img" aria-label="Placeholder image for ' + (game.title || "game") + '"></div>',
                         '<div class="card-body">',
                             '<h3>' + (game.title || "Untitled Game") + '</h3>',
@@ -395,7 +395,9 @@
             fetch("/data/games.json")
                 .then(function (res) {
                     if (!res.ok) {
-                        throw new Error("Games data could not be loaded (HTTP " + res.status + ")");
+                        const err = new Error("Games data could not be loaded");
+                        err.status = res.status;
+                        throw err;
                     }
                     return res.json();
                 })
@@ -406,7 +408,10 @@
                     grid.innerHTML = games.map(gameCardTemplate).join("");
                 })
                 .catch(function (error) {
-                    grid.innerHTML = '<div class="panel">Could not load games right now. ' + (error && error.message ? error.message : 'Please try again later.') + '</div>';
+                    if (error && error.status) {
+                        console.error('Games data fetch failed with status:', error.status);
+                    }
+                    grid.innerHTML = '<div class="panel">Could not load games right now. Please try again later.</div>';
                 });
 
             const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
