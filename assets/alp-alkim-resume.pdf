@@ -1,0 +1,97 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 1 /Kids [3 0 R] >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /Helvetica 4 0 R /HelveticaBold 5 0 R >> >> /Contents 6 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+6 0 obj
+<< /Length 2048 >>
+stream
+BT
+/HelveticaBold 22 Tf
+1 0 0 1 72 770 Tm
+(ALP ALKIM) Tj
+/Helvetica 12 Tf
+1 0 0 1 72 748 Tm
+(Unity Game Developer specializing in puzzle and systemic gameplay) Tj
+/Helvetica 11 Tf
+1 0 0 1 72 726 Tm
+(Email: alpalkim@gmail.com   |   GitHub: github.com/alpalkim   |   Portfolio: alpalkim.github.io) Tj
+/HelveticaBold 14 Tf
+1 0 0 1 72 690 Tm
+(PROFILE) Tj
+/Helvetica 11 Tf
+1 0 0 1 72 670 Tm
+(Builds mobile puzzle experiences focused on solver-aware content, readable UX, and daily retention loops.) Tj
+/Helvetica 11 Tf
+1 0 0 1 72 654 Tm
+(Enjoys turning compact rulesets into polished gameplay systems that stay elegant under real product constraints.) Tj
+/HelveticaBold 14 Tf
+1 0 0 1 72 622 Tm
+(FEATURED PROJECT) Tj
+/HelveticaBold 12 Tf
+1 0 0 1 72 602 Tm
+(Colorful Words: Reveal Puzzle  |  iOS) Tj
+/Helvetica 11 Tf
+1 0 0 1 72 584 Tm
+(Mobile word-puzzle project designed around short sessions, board clarity, and satisfying reveal moments.) Tj
+/Helvetica 11 Tf
+1 0 0 1 72 568 Tm
+(Focused on puzzle generation, system readability, and repeat-friendly progression structure.) Tj
+/HelveticaBold 14 Tf
+1 0 0 1 72 536 Tm
+(CORE STRENGTHS) Tj
+/Helvetica 11 Tf
+1 0 0 1 88 516 Tm
+(• Puzzle logic and constraint-driven gameplay systems) Tj
+/Helvetica 11 Tf
+1 0 0 1 88 500 Tm
+(• Procedural generation with solver-aware validation) Tj
+/Helvetica 11 Tf
+1 0 0 1 88 484 Tm
+(• Daily puzzle systems and streak-friendly retention loops) Tj
+/Helvetica 11 Tf
+1 0 0 1 88 468 Tm
+(• Mobile UX polish, readability, and performance-minded implementation) Tj
+/HelveticaBold 14 Tf
+1 0 0 1 72 436 Tm
+(TOOLS & TECHNOLOGIES) Tj
+/Helvetica 11 Tf
+1 0 0 1 88 416 Tm
+(Unity, C#, mobile optimization, UI motion, Firebase-ready integrations) Tj
+/HelveticaBold 14 Tf
+1 0 0 1 72 384 Tm
+(WORKING STYLE) Tj
+/Helvetica 11 Tf
+1 0 0 1 72 364 Tm
+(Starts from the rules, then the solver, then the presentation layer that makes the system feel alive.) Tj
+/Helvetica 11 Tf
+1 0 0 1 72 348 Tm
+(Aims for gameplay that is immediately readable, but deepens the longer a player stays with it.) Tj
+ET
+endstream
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000269 00000 n 
+0000000339 00000 n 
+0000000414 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+2514
+%%EOF

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" role="img" aria-labelledby="title desc">
+  <title id="title">Colorful Words Reveal Puzzle showcase artwork</title>
+  <desc id="desc">Stylized puzzle board and word-game interface artwork for the portfolio website.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0f1a33" />
+      <stop offset="100%" stop-color="#09101e" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#7c9aff" />
+      <stop offset="100%" stop-color="#48d6c6" />
+    </linearGradient>
+    <linearGradient id="accentWarm" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#ffb86b" />
+      <stop offset="100%" stop-color="#ff8b7a" />
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="800" rx="40" fill="url(#bg)" />
+  <circle cx="180" cy="110" r="180" fill="#7c9aff" opacity="0.18" />
+  <circle cx="1110" cy="120" r="120" fill="#48d6c6" opacity="0.16" />
+  <rect x="80" y="76" width="1120" height="648" rx="34" fill="#10192d" stroke="#ffffff" stroke-opacity="0.14" />
+  <rect x="126" y="120" width="470" height="560" rx="28" fill="#0b1324" stroke="#ffffff" stroke-opacity="0.1" />
+  <text x="144" y="176" fill="#f5f7ff" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">Colorful Words</text>
+  <text x="144" y="212" fill="#b6c0de" font-family="Arial, Helvetica, sans-serif" font-size="18">Reveal Puzzle • iOS • Unity</text>
+  <g transform="translate(150 250)">
+    <rect width="388" height="388" rx="28" fill="#15213b" stroke="#ffffff" stroke-opacity="0.08" />
+    <g stroke="#ffffff" stroke-opacity="0.12">
+      <path d="M64 0V388" /><path d="M128 0V388" /><path d="M194 0V388" /><path d="M258 0V388" /><path d="M324 0V388" />
+      <path d="M0 64H388" /><path d="M0 128H388" /><path d="M0 194H388" /><path d="M0 258H388" /><path d="M0 324H388" />
+    </g>
+    <g>
+      <rect x="12" y="12" width="52" height="52" rx="16" fill="url(#accent)" />
+      <rect x="76" y="12" width="52" height="52" rx="16" fill="#24304f" />
+      <rect x="140" y="12" width="52" height="52" rx="16" fill="url(#accentWarm)" />
+      <rect x="204" y="76" width="52" height="52" rx="16" fill="url(#accent)" />
+      <rect x="268" y="140" width="52" height="52" rx="16" fill="url(#accentWarm)" />
+      <rect x="76" y="204" width="52" height="52" rx="16" fill="url(#accent)" />
+      <rect x="140" y="268" width="52" height="52" rx="16" fill="url(#accentWarm)" />
+      <rect x="204" y="332" width="52" height="52" rx="16" fill="url(#accent)" />
+    </g>
+    <g fill="#dce5ff" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700">
+      <text x="28" y="48">C</text>
+      <text x="155" y="48">O</text>
+      <text x="219" y="112">L</text>
+      <text x="284" y="176">O</text>
+      <text x="90" y="240">R</text>
+      <text x="156" y="304">S</text>
+      <text x="221" y="367">!</text>
+    </g>
+  </g>
+  <g transform="translate(650 146)">
+    <rect width="480" height="88" rx="24" fill="#121f38" stroke="#ffffff" stroke-opacity="0.1" />
+    <text x="28" y="38" fill="#48d6c6" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">SYSTEM FOCUS</text>
+    <text x="28" y="66" fill="#f5f7ff" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">Solver-backed generation + daily challenge loop</text>
+  </g>
+  <g transform="translate(650 270)">
+    <rect width="480" height="110" rx="24" fill="#121f38" stroke="#ffffff" stroke-opacity="0.1" />
+    <text x="28" y="38" fill="#7c9aff" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">WHY IT STANDS OUT</text>
+    <text x="28" y="70" fill="#f5f7ff" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700">Short sessions, readable boards, satisfying reveal moments</text>
+  </g>
+  <g transform="translate(650 418)">
+    <rect width="228" height="170" rx="24" fill="#121f38" stroke="#ffffff" stroke-opacity="0.1" />
+    <text x="24" y="38" fill="#ffb86b" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">TOOLS</text>
+    <text x="24" y="74" fill="#f5f7ff" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Unity</text>
+    <text x="24" y="106" fill="#f5f7ff" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">C#</text>
+    <text x="24" y="138" fill="#f5f7ff" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Mobile UX</text>
+  </g>
+  <g transform="translate(902 418)">
+    <rect width="228" height="170" rx="24" fill="#121f38" stroke="#ffffff" stroke-opacity="0.1" />
+    <text x="24" y="38" fill="#48d6c6" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">SYSTEMS</text>
+    <text x="24" y="74" fill="#f5f7ff" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Puzzle solver</text>
+    <text x="24" y="106" fill="#f5f7ff" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Daily streak</text>
+    <text x="24" y="138" fill="#f5f7ff" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Optimization</text>
+  </g>
+</svg>

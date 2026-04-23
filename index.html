@@ -3,37 +3,38 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ALP ALKIM | Game Developer Portfolio</title>
-    <meta name="description" content="ALP ALKIM's portfolio featuring games, skills and contact links." />
+    <title>ALP ALKIM | Unity Puzzle Game Developer</title>
+    <meta name="description" content="Unity game developer specializing in puzzle systems, mobile gameplay, and polished player experiences." />
     <meta name="theme-color" content="#0b1120" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="ALP ALKIM | Game Developer Portfolio" />
-    <meta property="og:description" content="Explore games, tech stack and contact information." />
+    <meta property="og:title" content="ALP ALKIM | Unity Puzzle Game Developer" />
+    <meta property="og:description" content="Puzzle gameplay systems, featured projects, and contact details for ALP ALKIM." />
     <meta property="og:url" content="https://alpalkim.github.io/" />
     <meta property="og:site_name" content="ALP ALKIM" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="ALP ALKIM | Game Developer Portfolio" />
-    <meta name="twitter:description" content="Explore games, tech stack and contact information." />
+    <meta name="twitter:title" content="ALP ALKIM | Unity Puzzle Game Developer" />
+    <meta name="twitter:description" content="Puzzle gameplay systems, featured projects, and contact details for ALP ALKIM." />
 
     <style>
         :root {
             --bg: #070b16;
-            --surface: #121a2d;
-            --surface-elevated: #1a243d;
+            --surface: rgba(18, 26, 45, 0.92);
+            --surface-strong: rgba(26, 36, 61, 0.98);
+            --surface-soft: rgba(255, 255, 255, 0.05);
             --text: #f5f7ff;
             --muted: #b6c0de;
             --accent: #7c9aff;
             --accent-2: #48d6c6;
+            --accent-3: #ffb86b;
             --border: rgba(255, 255, 255, 0.12);
-            --container: 1120px;
-            --radius: 18px;
-            --shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+            --container: 1160px;
+            --radius: 22px;
+            --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
         }
 
         * { box-sizing: border-box; }
-
         html { scroll-behavior: smooth; }
 
         body {
@@ -41,10 +42,10 @@
             font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             color: var(--text);
             background:
-                radial-gradient(circle at 10% 10%, rgba(124, 154, 255, 0.18), transparent 30%),
+                radial-gradient(circle at 10% 10%, rgba(124, 154, 255, 0.2), transparent 30%),
                 radial-gradient(circle at 90% 20%, rgba(72, 214, 198, 0.14), transparent 25%),
-                var(--bg);
-            line-height: 1.55;
+                linear-gradient(180deg, #0a1020 0%, #070b16 100%);
+            line-height: 1.6;
         }
 
         a { color: inherit; }
@@ -55,12 +56,25 @@
             padding: 0 20px;
         }
 
+        .skip-link {
+            position: absolute;
+            left: -999px;
+            top: 12px;
+            background: #fff;
+            color: #000;
+            padding: 10px 14px;
+            border-radius: 12px;
+            z-index: 999;
+        }
+
+        .skip-link:focus { left: 12px; }
+
         header {
             position: sticky;
             top: 0;
-            z-index: 10;
-            backdrop-filter: blur(10px);
-            background: rgba(7, 11, 22, 0.7);
+            z-index: 20;
+            backdrop-filter: blur(16px);
+            background: rgba(7, 11, 22, 0.78);
             border-bottom: 1px solid var(--border);
         }
 
@@ -68,145 +82,558 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 14px 0;
-            gap: 14px;
+            gap: 16px;
+            min-height: 78px;
         }
 
-        .brand { font-weight: 700; letter-spacing: 0.04em; }
+        .brand {
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .nav-toggle {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            background: rgba(124, 154, 255, 0.08);
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .nav-toggle span,
+        .nav-toggle span::before,
+        .nav-toggle span::after {
+            display: block;
+            width: 18px;
+            height: 2px;
+            border-radius: 999px;
+            background: currentColor;
+            position: relative;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+
+        .nav-toggle span::before,
+        .nav-toggle span::after {
+            content: "";
+            position: absolute;
+            left: 0;
+        }
+
+        .nav-toggle span::before { top: -6px; }
+        .nav-toggle span::after { top: 6px; }
+
+        .nav-toggle[aria-expanded="true"] span { background: transparent; }
+        .nav-toggle[aria-expanded="true"] span::before { transform: translateY(6px) rotate(45deg); }
+        .nav-toggle[aria-expanded="true"] span::after { transform: translateY(-6px) rotate(-45deg); }
 
         .nav-links {
             display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
             font-size: 0.95rem;
             color: var(--muted);
         }
 
         .nav-links a {
             text-decoration: none;
-            padding: 8px 10px;
-            border-radius: 10px;
-            transition: background-color 0.2s ease;
+            padding: 10px 12px;
+            border-radius: 12px;
+            transition: background-color 0.2s ease, color 0.2s ease;
         }
 
         .nav-links a:hover,
-        .nav-links a:focus-visible {
+        .nav-links a:focus-visible,
+        .button:hover,
+        .button:focus-visible,
+        .link-inline:hover,
+        .link-inline:focus-visible {
             background: rgba(124, 154, 255, 0.16);
             color: var(--text);
             outline: none;
         }
 
-        main { padding-bottom: 60px; }
-
-        section { padding: 70px 0 0; }
+        main { padding-bottom: 72px; }
+        section { padding: 88px 0 0; }
 
         .hero {
-            padding-top: 44px;
-            animation: fade-up 0.7s ease both;
+            padding-top: 48px;
+            animation: fade-up 0.8s ease both;
+        }
+
+        .hero-shell {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 32px;
+            box-shadow: var(--shadow);
+            background:
+                radial-gradient(circle at top left, rgba(124, 154, 255, 0.22), transparent 34%),
+                radial-gradient(circle at bottom right, rgba(72, 214, 198, 0.16), transparent 28%),
+                linear-gradient(145deg, rgba(16, 25, 46, 0.95), rgba(9, 14, 28, 0.98));
+            padding: 34px;
+        }
+
+        .hero-shell::after {
+            content: "";
+            position: absolute;
+            inset: auto -60px -80px auto;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: rgba(124, 154, 255, 0.16);
+            filter: blur(24px);
+            pointer-events: none;
+        }
+
+        .hero-layout {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+            gap: 28px;
+            align-items: center;
+        }
+
+        .eyebrow,
+        .status-pill,
+        .mini-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            width: fit-content;
+            border-radius: 999px;
+            border: 1px solid rgba(124, 154, 255, 0.3);
+            background: rgba(124, 154, 255, 0.12);
+            color: #e7edff;
+            padding: 7px 12px;
+            font-size: 0.82rem;
         }
 
         .hero h1 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin: 0;
+            margin: 18px 0 0;
+            font-size: clamp(2.4rem, 6vw, 4.6rem);
+            line-height: 1.02;
+            max-width: 11ch;
         }
 
-        .hero p {
-            margin: 14px 0 0;
+        .hero-copy {
+            margin: 18px 0 0;
             color: var(--muted);
-            max-width: 68ch;
+            font-size: 1.08rem;
+            max-width: 58ch;
         }
 
-        .section-title {
-            font-size: 1.6rem;
-            margin: 0 0 18px;
+        .hero-actions,
+        .socials,
+        .button-row,
+        .mini-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
-        .games-grid {
+        .hero-actions { margin-top: 24px; }
+        .hero-points {
+            margin: 26px 0 0;
+            padding: 0;
+            list-style: none;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 18px;
+            gap: 10px;
+            color: var(--muted);
         }
 
-        .card {
+        .hero-points li {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .hero-points li::before {
+            content: "◆";
+            color: var(--accent-2);
+            font-size: 0.85rem;
+            line-height: 1.8;
+        }
+
+        .button,
+        .link-inline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            padding: 11px 16px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: rgba(124, 154, 255, 0.08);
+            min-height: 46px;
+            transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .button:hover,
+        .button:focus-visible,
+        .link-inline:hover,
+        .link-inline:focus-visible {
+            transform: translateY(-2px);
+            border-color: rgba(124, 154, 255, 0.4);
+        }
+
+        .button.primary {
+            background: linear-gradient(135deg, rgba(124, 154, 255, 0.95), rgba(72, 214, 198, 0.95));
+            color: #06101e;
+            border: none;
+            font-weight: 700;
+        }
+
+        .button.secondary {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .hero-media,
+        .media-card,
+        .section-card,
+        .panel,
+        .article-card,
+        .system-card,
+        .project-highlight,
+        .resume-card,
+        .contact-card {
             background: linear-gradient(160deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
             border: 1px solid var(--border);
             border-radius: var(--radius);
             box-shadow: var(--shadow);
-            overflow: hidden;
-            transform: translateY(0);
-            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
         }
 
-        .card:hover,
-        .card:focus-within {
-            transform: translateY(-6px);
-            border-color: rgba(124, 154, 255, 0.45);
-            box-shadow: 0 24px 44px rgba(9, 15, 30, 0.6);
+        .hero-media {
+            padding: 18px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-media::before {
+            content: "";
+            position: absolute;
+            inset: 12px 12px auto auto;
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: rgba(72, 214, 198, 0.18);
+            filter: blur(20px);
+            pointer-events: none;
+        }
+
+        .media-topline {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 14px;
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .preview-shell {
+            position: relative;
+            overflow: hidden;
+            min-height: 360px;
+            border-radius: 18px;
+            background:
+                linear-gradient(135deg, rgba(18, 30, 58, 0.96), rgba(10, 18, 36, 0.98)),
+                url('/assets/colorful-words-cover.svg') center/cover no-repeat;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 18px;
+        }
+
+        .preview-shell::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(5, 8, 18, 0.05), rgba(5, 8, 18, 0.62));
+        }
+
+        .preview-shell > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .preview-ui {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 324px;
+        }
+
+        .mini-pills { gap: 10px; }
+
+        .mini-pill {
+            background: rgba(7, 11, 22, 0.56);
+            backdrop-filter: blur(6px);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .puzzle-board {
+            width: min(100%, 290px);
+            aspect-ratio: 1;
+            margin: 0 auto;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background:
+                linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+                linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+            background-size: auto, calc(100% / 6) calc(100% / 6), calc(100% / 6) calc(100% / 6);
+            background-position: center;
+            position: relative;
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+            animation: float 5s ease-in-out infinite;
+        }
+
+        .puzzle-board::before,
+        .puzzle-board::after {
+            content: "";
+            position: absolute;
+            inset: 16% auto auto 16%;
+            width: 18%;
+            aspect-ratio: 1;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(124, 154, 255, 0.92), rgba(72, 214, 198, 0.74));
+            box-shadow: 88px 0 0 rgba(255, 184, 107, 0.88), 176px 88px 0 rgba(124, 154, 255, 0.75), 88px 176px 0 rgba(72, 214, 198, 0.8), 0 176px 0 rgba(255, 184, 107, 0.84);
+            animation: pulse 3.6s ease-in-out infinite;
+        }
+
+        .puzzle-board::after {
+            inset: 33% auto auto 33%;
+            width: 18%;
+            background: rgba(255, 255, 255, 0.14);
+            box-shadow: 88px 0 0 rgba(255, 255, 255, 0.1), 0 88px 0 rgba(255, 255, 255, 0.1), 176px 0 0 rgba(255, 255, 255, 0.12), 176px 176px 0 rgba(255, 255, 255, 0.08);
+            animation-delay: -1.8s;
+        }
+
+        .board-caption {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            color: var(--muted);
+            font-size: 0.88rem;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            align-items: end;
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin: 0;
+        }
+
+        .section-lead {
+            margin: 10px 0 0;
+            max-width: 62ch;
+            color: var(--muted);
+        }
+
+        #games-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 18px;
+        }
+
+        .card {
+            display: grid;
+            grid-template-columns: minmax(0, 330px) minmax(0, 1fr);
+            gap: 0;
+            overflow: hidden;
+        }
+
+        .featured-card {
+            background: linear-gradient(160deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
         }
 
         .game-image {
-            aspect-ratio: 16 / 9;
             width: 100%;
+            height: 100%;
+            min-height: 100%;
             object-fit: cover;
             display: block;
             background: linear-gradient(140deg, #233155, #0f172c);
         }
 
-        .card-body { padding: 16px; }
+        .card-body {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 14px;
+        }
 
-        .card h3 { margin: 0 0 8px; font-size: 1.1rem; }
+        .card h3,
+        .media-card h3,
+        .article-card h3,
+        .system-card h3,
+        .resume-card h3,
+        .contact-card h3 {
+            margin: 0;
+            font-size: 1.3rem;
+        }
 
-        .card p { margin: 0 0 12px; color: var(--muted); font-size: 0.96rem; }
+        .card p,
+        .panel p,
+        .article-card p,
+        .system-card p,
+        .resume-card p,
+        .contact-card p,
+        .meta-list,
+        .detail-list {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .tags,
+        .meta-list,
+        .detail-grid,
+        .cards-grid,
+        .article-grid,
+        .system-grid,
+        .contact-grid,
+        .project-columns {
+            display: grid;
+            gap: 16px;
+        }
 
         .tags {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-bottom: 14px;
         }
 
         .tag {
-            background: rgba(72, 214, 198, 0.16);
-            color: #d6fff8;
-            border: 1px solid rgba(72, 214, 198, 0.35);
-            border-radius: 999px;
-            font-size: 0.8rem;
-            padding: 4px 10px;
-        }
-
-        .game-links {
-            display: flex;
-            flex-wrap: wrap;
+            display: inline-flex;
+            align-items: center;
             gap: 8px;
+            width: fit-content;
+            padding: 6px 11px;
+            border-radius: 999px;
+            border: 1px solid rgba(72, 214, 198, 0.35);
+            background: rgba(72, 214, 198, 0.12);
+            color: #d7fff7;
+            font-size: 0.82rem;
         }
 
-        .button {
-            text-decoration: none;
-            padding: 8px 12px;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            font-size: 0.85rem;
-            background: rgba(124, 154, 255, 0.1);
-            transition: background-color 0.2s ease;
+        .game-links,
+        .button-row { display: flex; flex-wrap: wrap; gap: 10px; }
+
+        .project-highlight {
+            padding: 26px;
+            display: grid;
+            gap: 22px;
         }
 
-        .button:hover,
-        .button:focus-visible {
-            background: rgba(124, 154, 255, 0.24);
-            outline: none;
-        }
-
-        .panel {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 20px;
-        }
-
-        .skills {
+        .project-head {
             display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 18px;
+            align-items: start;
+        }
+
+        .project-subtitle {
+            margin-top: 10px;
+            color: var(--muted);
+            max-width: 65ch;
+        }
+
+        .project-columns {
+            grid-template-columns: 1.05fr 0.95fr;
+            align-items: stretch;
+        }
+
+        .media-card,
+        .section-card,
+        .panel,
+        .article-card,
+        .system-card,
+        .resume-card,
+        .contact-card {
+            padding: 22px;
+        }
+
+        .showcase-screen {
+            margin-top: 18px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            overflow: hidden;
+            background: linear-gradient(140deg, rgba(22, 33, 59, 0.98), rgba(8, 14, 28, 0.98));
+        }
+
+        .showcase-screen img {
+            width: 100%;
+            display: block;
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+        }
+
+        .detail-grid,
+        .cards-grid,
+        .article-grid,
+        .system-grid,
+        .contact-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .section-card,
+        .article-card,
+        .system-card,
+        .resume-card,
+        .contact-card {
+            min-height: 100%;
+        }
+
+        .label {
+            display: inline-block;
+            margin-bottom: 12px;
+            color: var(--accent-2);
+            font-size: 0.84rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .detail-list,
+        .meta-list {
+            padding-left: 18px;
+        }
+
+        .detail-list li,
+        .meta-list li { margin-bottom: 10px; }
+
+        .section-card strong,
+        .system-card strong,
+        .article-card strong { color: var(--text); }
+
+        .link-inline {
+            width: fit-content;
+            padding-inline: 0;
+            min-height: auto;
+            border: none;
+            background: transparent;
+            border-radius: 0;
+        }
+
+        .footer {
+            padding: 30px 0 42px;
+            color: var(--muted);
+            font-size: 0.95rem;
         }
 
         .reveal {
@@ -220,36 +647,89 @@
             transform: translateY(0);
         }
 
-        .status-pill {
-            display: inline-block;
-            background: rgba(124, 154, 255, 0.16);
-            color: #dfe6ff;
-            border: 1px solid rgba(124, 154, 255, 0.35);
-            border-radius: 999px;
-            font-size: 0.8rem;
-            padding: 4px 10px;
-        }
-
-        .socials {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .footer {
-            padding: 28px 0 42px;
-            color: var(--muted);
-            font-size: 0.95rem;
-        }
-
         @keyframes fade-up {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        @media (max-width: 960px) {
+            .hero-layout,
+            .project-columns,
+            .card,
+            .detail-grid,
+            .cards-grid,
+            .article-grid,
+            .system-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 { max-width: 14ch; }
+            .section-header,
+            .project-head {
+                flex-direction: column;
+                align-items: start;
+            }
+        }
+
         @media (max-width: 768px) {
-            .nav { align-items: flex-start; flex-direction: column; }
-            section { padding-top: 56px; }
+            .nav {
+                min-height: 72px;
+                align-items: center;
+            }
+
+            .nav-toggle { display: inline-flex; }
+
+            .nav-links {
+                position: absolute;
+                top: calc(100% + 10px);
+                left: 20px;
+                right: 20px;
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+                padding: 16px;
+                border-radius: 18px;
+                border: 1px solid var(--border);
+                background: rgba(7, 11, 22, 0.97);
+                box-shadow: var(--shadow);
+            }
+
+            .nav-links.is-open { display: flex; }
+            .nav-links a { width: 100%; }
+
+            .hero-shell { padding: 26px 20px; border-radius: 26px; }
+            section { padding-top: 74px; }
+            .hero { padding-top: 26px; }
+            .preview-shell { min-height: 310px; }
+            .preview-ui { min-height: 274px; }
+        }
+
+        @media (max-width: 560px) {
+            .container { padding: 0 16px; }
+            .hero h1 { font-size: clamp(2rem, 12vw, 3.1rem); }
+            .card-body,
+            .media-card,
+            .section-card,
+            .panel,
+            .article-card,
+            .system-card,
+            .project-highlight,
+            .resume-card,
+            .contact-card { padding: 18px; }
+            .puzzle-board::before { box-shadow: 64px 0 0 rgba(255, 184, 107, 0.88), 128px 64px 0 rgba(124, 154, 255, 0.75), 64px 128px 0 rgba(72, 214, 198, 0.8), 0 128px 0 rgba(255, 184, 107, 0.84); }
+            .puzzle-board::after { box-shadow: 64px 0 0 rgba(255, 255, 255, 0.1), 0 64px 0 rgba(255, 255, 255, 0.1), 128px 0 0 rgba(255, 255, 255, 0.12), 128px 128px 0 rgba(255, 255, 255, 0.08); }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -263,76 +743,347 @@
     </style>
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
     <header>
         <div class="container nav">
-            <div class="brand">ALP ALKIM</div>
-            <nav class="nav-links" aria-label="Main navigation">
-                <a href="#games">Games</a>
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
+            <a class="brand" href="#top">ALP ALKIM</a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation">
+                <span></span>
+            </button>
+            <nav id="main-nav" class="nav-links" aria-label="Main navigation">
                 <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#writing">Writing</a>
+                <a href="#systems">Systems</a>
+                <a href="#showcase">Showcase</a>
+                <a href="#about">About</a>
                 <a href="#contact">Contact</a>
             </nav>
         </div>
     </header>
 
-    <main class="container">
-        <section class="hero" aria-labelledby="hero-title">
-            <h1 id="hero-title">Game Developer Portfolio</h1>
-            <p>
-                I build engaging, polished game experiences. Discover featured games below and explore
-                my tech stack, projects and contact links.
-            </p>
+    <main id="main-content" class="container">
+        <section class="hero" id="top" aria-labelledby="hero-title">
+            <div class="hero-shell">
+                <div class="hero-layout">
+                    <div>
+                        <span class="eyebrow">Available now on the App Store</span>
+                        <h1 id="hero-title">Unity Game Developer specializing in puzzle &amp; systemic gameplay</h1>
+                        <p class="hero-copy">
+                            I build mobile puzzle experiences where simple rules create satisfying depth. My work focuses on solvable generation,
+                            daily challenge loops, and polished UX that keeps players coming back.
+                        </p>
+                        <div class="hero-actions">
+                            <a class="button primary" href="#projects">View Projects</a>
+                            <a class="button secondary" href="#contact">Contact Me</a>
+                        </div>
+                        <ul class="hero-points">
+                            <li>Designing puzzle logic, solver-backed content, and replayable daily systems in Unity.</li>
+                            <li>Bringing systemic gameplay to mobile with DOTween feel, Firebase hooks, and live-ops friendly structure.</li>
+                            <li>Obsessed with making elegant rulesets feel readable, responsive, and rewarding.</li>
+                        </ul>
+                    </div>
+                    <aside class="hero-media" aria-label="Highlighted gameplay systems">
+                        <div class="media-topline">
+                            <span>Featured App</span>
+                            <span>Colorful Words: Reveal Puzzle</span>
+                        </div>
+                        <div class="preview-shell">
+                            <div class="preview-ui">
+                                <div class="mini-pills">
+                                    <span class="mini-pill">Solver-backed levels</span>
+                                    <span class="mini-pill">Daily streak loop</span>
+                                </div>
+                                <div class="puzzle-board" aria-hidden="true"></div>
+                                <div class="board-caption">
+                                    <span>Constraint-based puzzle flow</span>
+                                    <span>6x6 readability-first layout</span>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
         </section>
 
         <section id="games" class="reveal" aria-labelledby="games-title">
-            <h2 id="games-title" class="section-title">Featured Games</h2>
-            <div id="games-grid" class="games-grid" aria-live="polite"></div>
+            <div class="section-header">
+                <div>
+                    <h2 id="games-title" class="section-title">Featured Game</h2>
+                    <p class="section-lead">A focused showcase: one polished puzzle title with clear gameplay, systems thinking, and mobile-ready execution.</p>
+                </div>
+            </div>
+            <div id="games-grid" aria-live="polite"></div>
+        </section>
+
+        <section id="projects" class="reveal" aria-labelledby="projects-title">
+            <div class="section-header">
+                <div>
+                    <h2 id="projects-title" class="section-title">Featured Project Breakdown</h2>
+                    <p class="section-lead">Less volume, more depth. This section focuses on the project, systems, and decisions that best represent how I work.</p>
+                </div>
+            </div>
+            <article class="project-highlight">
+                <div class="project-head">
+                    <div>
+                        <span class="status-pill">iOS / Mobile Puzzle</span>
+                        <h3 style="margin-top: 14px; font-size: 1.8rem;">Colorful Words: Reveal Puzzle</h3>
+                        <p class="project-subtitle">
+                            A mobile word-puzzle experience shaped around approachable rules, satisfying reveals, and replay-friendly short sessions.
+                            The project balances content generation, puzzle clarity, and progression loops without losing responsiveness.
+                        </p>
+                    </div>
+                    <div class="button-row">
+                        <a class="button primary" href="https://apps.apple.com/tr/app/colorful-words-reveal-puzzle/id6761399233" target="_blank" rel="noopener noreferrer">App Store</a>
+                        <a class="button secondary" href="/privacy-policy/word-reveal.html">Privacy Policy</a>
+                    </div>
+                </div>
+                <div class="project-columns">
+                    <div class="media-card">
+                        <span class="label">Gameplay showcase</span>
+                        <h3>Puzzle feel with systems under the hood</h3>
+                        <p>
+                            The core loop is built around discoverability, readable grid states, and satisfying reveal moments. I aim for a presentation that feels clean on first contact while still supporting deeper systemic design underneath.
+                        </p>
+                        <div class="showcase-screen">
+                            <img src="/assets/colorful-words-cover.svg" alt="Colorful Words puzzle showcase artwork" loading="lazy" />
+                        </div>
+                    </div>
+                    <div class="detail-grid">
+                        <div class="section-card">
+                            <span class="label">My contribution</span>
+                            <ul class="detail-list">
+                                <li>Built puzzle generation flows with solver-aware validation to keep levels fair and finishable.</li>
+                                <li>Shaped the gameplay UX with feedback loops, UI motion, and readability-first interactions.</li>
+                                <li>Structured daily puzzle and streak-friendly loops to support retention without bloating the core rules.</li>
+                                <li>Focused on mobile responsiveness and efficient content flows for repeat play.</li>
+                            </ul>
+                        </div>
+                        <div class="section-card">
+                            <span class="label">Tools &amp; tech</span>
+                            <div class="tags">
+                                <span class="tag">Unity</span>
+                                <span class="tag">C#</span>
+                                <span class="tag">DOTween-style UI feel</span>
+                                <span class="tag">Firebase-ready</span>
+                                <span class="tag">Mobile optimization</span>
+                            </div>
+                        </div>
+                        <div class="section-card">
+                            <span class="label">Problem &amp; solution</span>
+                            <ul class="detail-list">
+                                <li><strong>Solvability risk:</strong> custom validation flow keeps generated puzzles consistent with player expectations.</li>
+                                <li><strong>Session friction:</strong> lightweight progression and streak structure support repeat daily play.</li>
+                                <li><strong>Mobile clarity:</strong> UI hierarchy and readable board states reduce confusion during short sessions.</li>
+                            </ul>
+                        </div>
+                        <div class="section-card">
+                            <span class="label">Platform &amp; links</span>
+                            <ul class="meta-list">
+                                <li><strong>Platform:</strong> iOS</li>
+                                <li><strong>Format:</strong> Mobile puzzle / short sessions</li>
+                                <li><strong>Live link:</strong> <a class="link-inline" href="https://apps.apple.com/tr/app/colorful-words-reveal-puzzle/id6761399233" target="_blank" rel="noopener noreferrer">Open App Store page</a></li>
+                                <li><strong>Support:</strong> <a class="link-inline" href="/support.html">Contact form</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section id="skills" class="reveal" aria-labelledby="skills-title">
+            <div class="section-header">
+                <div>
+                    <h2 id="skills-title" class="section-title">Technical Strengths</h2>
+                    <p class="section-lead">Not a star list. These are the kinds of problems and systems I enjoy building most.</p>
+                </div>
+            </div>
+            <div class="cards-grid">
+                <article class="section-card">
+                    <span class="label">Gameplay systems</span>
+                    <h3>Puzzle logic &amp; rulesets</h3>
+                    <p>Constraint-driven gameplay, readable progression, and systems where a few simple rules can generate a lot of depth.</p>
+                </article>
+                <article class="section-card">
+                    <span class="label">Content structure</span>
+                    <h3>Procedural generation</h3>
+                    <p>Level flow design with solvability checks, repeatable puzzle generation, and logic that supports long-term content needs.</p>
+                </article>
+                <article class="section-card">
+                    <span class="label">Mobile craft</span>
+                    <h3>Retention-ready UX</h3>
+                    <p>Daily puzzle systems, streak mechanics, session-friendly pacing, and polished interactions built for phones first.</p>
+                </article>
+                <article class="section-card">
+                    <span class="label">Tools &amp; tech</span>
+                    <h3>Unity stack</h3>
+                    <p>Unity, C#, DOTween-style motion, Firebase-ready integrations, notifications, and optimization-minded implementation.</p>
+                </article>
+            </div>
+            <div class="panel" style="margin-top: 18px;">
+                <p><strong>Example focus:</strong> building compact grid-based puzzle systems that stay readable, replayable, and solvable under real mobile constraints.</p>
+            </div>
+        </section>
+
+        <section id="writing" class="reveal" aria-labelledby="writing-title">
+            <div class="section-header">
+                <div>
+                    <h2 id="writing-title" class="section-title">Deep Technical Writing</h2>
+                    <p class="section-lead">The goal here is to show engineering thinking behind the games: generation, solver logic, retention systems, and performance trade-offs.</p>
+                </div>
+            </div>
+            <div class="article-grid">
+                <article class="article-card">
+                    <span class="label">Planned article</span>
+                    <h3>How I Built a Solvable Puzzle Generator in Unity</h3>
+                    <p>Explaining generation constraints, validation passes, and why puzzle fairness depends on solver-aware tooling.</p>
+                </article>
+                <article class="article-card">
+                    <span class="label">Planned article</span>
+                    <h3>Designing a Daily Puzzle System with Streak Mechanics</h3>
+                    <p>Breaking down reward loops, session cadence, and how to keep a daily system motivating without overwhelming the player.</p>
+                </article>
+                <article class="article-card">
+                    <span class="label">Planned article</span>
+                    <h3>Optimizing Unity Instantiations for Puzzle Content</h3>
+                    <p>A performance-focused case study around pooling, UI refresh costs, and keeping puzzle interactions snappy on mobile.</p>
+                </article>
+                <article class="article-card">
+                    <span class="label">Themes</span>
+                    <h3>What these posts will cover</h3>
+                    <p>Solver logic, grid systems, daily content pipelines, and the engineering decisions that make small puzzle games scale well.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="systems" class="reveal" aria-labelledby="systems-title">
+            <div class="section-header">
+                <div>
+                    <h2 id="systems-title" class="section-title">Highlighted Systems</h2>
+                    <p class="section-lead">Project-independent case studies help show the systems mindset behind the shipped work.</p>
+                </div>
+            </div>
+            <div class="system-grid">
+                <article class="system-card">
+                    <span class="label">Case study</span>
+                    <h3>Puzzle solver system</h3>
+                    <p><strong>Problem:</strong> random generation can create unsatisfying or invalid states.</p>
+                    <p><strong>Approach:</strong> validate generated boards with rule-aware solving logic before surfacing them to players.</p>
+                    <p><strong>Result:</strong> stronger trust in puzzle fairness and a cleaner content pipeline.</p>
+                </article>
+                <article class="system-card">
+                    <span class="label">Case study</span>
+                    <h3>Daily challenge loop</h3>
+                    <p><strong>Problem:</strong> retention systems can feel bolted on if they fight the core loop.</p>
+                    <p><strong>Approach:</strong> keep the daily ritual lightweight, readable, and connected to streak momentum.</p>
+                    <p><strong>Result:</strong> repeatable reasons to return without overcomplicating the puzzle itself.</p>
+                </article>
+                <article class="system-card">
+                    <span class="label">Case study</span>
+                    <h3>Mobile performance pass</h3>
+                    <p><strong>Problem:</strong> small frame hitches make puzzle games feel cheap.</p>
+                    <p><strong>Approach:</strong> optimize content refreshes, keep UI motion intentional, and reduce needless churn.</p>
+                    <p><strong>Result:</strong> smoother interaction feel and more consistent polish on mobile hardware.</p>
+                </article>
+                <article class="system-card">
+                    <span class="label">Showcase area</span>
+                    <h3>Video / reel slot</h3>
+                    <p>A dedicated 30–60 second reel area is ready to support future gameplay clips, feature callouts, or a YouTube embed when available.</p>
+                    <a class="button secondary" href="https://apps.apple.com/tr/app/colorful-words-reveal-puzzle/id6761399233" target="_blank" rel="noopener noreferrer">See the live game</a>
+                </article>
+            </div>
+        </section>
+
+        <section id="showcase" class="reveal" aria-labelledby="showcase-title">
+            <div class="section-header">
+                <div>
+                    <h2 id="showcase-title" class="section-title">Video / Showcase Area</h2>
+                    <p class="section-lead">A dedicated reel section for short-form highlights, gameplay beats, and system callouts that can later be swapped with a real trailer or YouTube embed.</p>
+                </div>
+            </div>
+            <div class="project-columns">
+                <article class="media-card">
+                    <span class="label">Showreel slot</span>
+                    <h3>30–60 second portfolio reel</h3>
+                    <p>
+                        The layout now supports a compact showcase block for puzzle footage, highlight captions, or a future embedded video without changing the rest of the homepage structure.
+                    </p>
+                    <div class="showcase-screen">
+                        <img src="/assets/colorful-words-cover.svg" alt="Portfolio showcase placeholder for Colorful Words reel" loading="lazy" />
+                    </div>
+                </article>
+                <article class="section-card">
+                    <span class="label">Recommended clip flow</span>
+                    <ul class="detail-list">
+                        <li>Quick hook with the puzzle board and reveal effect.</li>
+                        <li>Mid-section callouts for solver-backed generation and daily loop structure.</li>
+                        <li>Finish with App Store CTA and contact details for recruiters or collaborators.</li>
+                    </ul>
+                    <div class="button-row" style="margin-top: 18px;">
+                        <a class="button primary" href="https://apps.apple.com/tr/app/colorful-words-reveal-puzzle/id6761399233" target="_blank" rel="noopener noreferrer">Open App Store</a>
+                        <a class="button secondary" href="#contact">Contact Me</a>
+                    </div>
+                </article>
+            </div>
         </section>
 
         <section id="about" class="reveal" aria-labelledby="about-title">
-            <h2 id="about-title" class="section-title">About Me</h2>
+            <div class="section-header">
+                <div>
+                    <h2 id="about-title" class="section-title">About Me</h2>
+                    <p class="section-lead">I enjoy building systems where simple rules create complex gameplay. Puzzle design is where that obsession feels most rewarding.</p>
+                </div>
+            </div>
             <div class="panel">
                 <p>
-                    I focus on gameplay feel, smooth UX and maintainable development workflows. My goal is to ship games
-                    that are fun, performant and player-friendly.
+                    I like games that stay elegant under the hood: clear inputs, understandable systems, and enough structure to keep surprising the player.
+                    My process usually starts with the rules, then the solver, then the layer that makes it feel alive on screen. The result I chase is simple:
+                    gameplay that feels obvious once you touch it, but keeps revealing depth the longer you stay with it.
                 </p>
             </div>
         </section>
 
-        <section id="skills" class="reveal" aria-labelledby="skills-title">
-            <h2 id="skills-title" class="section-title">Tech Stack</h2>
-            <div class="panel skills">
-                <span class="tag">Unity</span>
-                <span class="tag">C#</span>
-                <span class="tag">Mobile Optimization</span>
-                <span class="tag">UI/UX</span>
-                <span class="tag">Git & CI</span>
+        <section id="resume" class="reveal" aria-labelledby="resume-title">
+            <div class="section-header">
+                <div>
+                    <h2 id="resume-title" class="section-title">Resume</h2>
+                    <p class="section-lead">A concise PDF version is available for recruiters, collaborators, and anyone who wants the quick overview.</p>
+                </div>
             </div>
-        </section>
-
-        <section id="projects" class="reveal" aria-labelledby="projects-title">
-            <h2 id="projects-title" class="section-title">Other Projects</h2>
-            <div class="panel">
-                <p>You can also find support and policy pages for published apps:</p>
-                <div class="socials">
-                    <a class="button" href="/support.html">Support</a>
-                    <a class="button" href="/scoreblastprivacypolicy.html">Score Blaster Privacy Policy</a>
-                    <a class="button" href="/privacy-policy/word-reveal.html">Word Reveal Privacy Policy</a>
-                    <a class="button" href="/privacy-policy/puzzle-hero-buddies.html">Puzzle Hero Buddies Privacy Policy</a>
+            <div class="resume-card">
+                <h3>Downloadable PDF</h3>
+                <p>Grab a short resume with focus areas, featured work, and contact details.</p>
+                <div class="button-row" style="margin-top: 18px;">
+                    <a class="button primary" href="/assets/alp-alkim-resume.pdf" download>Download Resume PDF</a>
+                    <a class="button secondary" href="mailto:alpalkim@gmail.com">Request full CV</a>
                 </div>
             </div>
         </section>
 
         <section id="contact" class="reveal" aria-labelledby="contact-title">
-            <h2 id="contact-title" class="section-title">Contact & Social</h2>
-            <div class="panel">
-                <p>For business inquiries or support, contact me via email or social profiles.</p>
-                <div class="socials">
-                    <a class="button" href="mailto:alpalkim@gmail.com">Email</a>
-                    <a class="button" href="https://github.com/alpalkim" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    <a class="button" href="/support.html">Support Form</a>
+            <div class="section-header">
+                <div>
+                    <h2 id="contact-title" class="section-title">Contact</h2>
+                    <p class="section-lead">Open to puzzle, systems, and mobile gameplay conversations.</p>
                 </div>
+            </div>
+            <div class="contact-grid">
+                <article class="contact-card">
+                    <span class="label">Email</span>
+                    <h3>alpalkim@gmail.com</h3>
+                    <p>Best for business inquiries, collaboration, and portfolio conversations.</p>
+                    <a class="button secondary" style="margin-top: 16px;" href="mailto:alpalkim@gmail.com">Send Email</a>
+                </article>
+                <article class="contact-card">
+                    <span class="label">Profiles</span>
+                    <h3>GitHub &amp; support</h3>
+                    <p>Browse code-related work or use the support form for app-specific questions.</p>
+                    <div class="button-row" style="margin-top: 16px;">
+                        <a class="button secondary" href="https://github.com/alpalkim" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a class="button secondary" href="/support.html">Support Form</a>
+                    </div>
+                </article>
             </div>
         </section>
     </main>
@@ -345,10 +1096,13 @@
         (function () {
             const grid = document.getElementById("games-grid");
             const year = document.getElementById("year");
+            const navToggle = document.querySelector(".nav-toggle");
+            const navLinks = document.getElementById("main-nav");
+
             year.textContent = new Date().getFullYear();
 
             const linkLabels = {
-                play: "Play / Download",
+                play: "App Store",
                 github: "GitHub",
                 itch: "itch.io",
                 steam: "Steam"
@@ -360,13 +1114,25 @@
                 return /^https?:\/\//i.test(trimmed) || trimmed.startsWith("/") ? trimmed : "";
             }
 
+            function escapeHtml(value) {
+                return String(value || "").replace(/[&<>"']/g, function (char) {
+                    return ({
+                        "&": "&amp;",
+                        "<": "&lt;",
+                        ">": "&gt;",
+                        '"': "&quot;",
+                        "'": "&#39;"
+                    })[char];
+                });
+            }
+
             function gameCardTemplate(game) {
                 const tech = Array.isArray(game.tech) ? game.tech : [];
                 const links = game.links && typeof game.links === "object" ? game.links : {};
                 const image = safeUrl(game.image);
 
                 const tags = tech.map(function (item) {
-                    return '<span class="tag">' + item + '</span>';
+                    return '<span class="tag">' + escapeHtml(item) + '</span>';
                 }).join("");
 
                 const linkHtml = Object.keys(linkLabels).map(function (key) {
@@ -374,17 +1140,18 @@
                     if (!href) return "";
                     const external = href.startsWith("http");
                     const attrs = external ? ' target="_blank" rel="noopener noreferrer"' : "";
-                    return '<a class="button" href="' + href + '"' + attrs + '>' + linkLabels[key] + '</a>';
+                    return '<a class="button secondary" href="' + href + '"' + attrs + '>' + linkLabels[key] + '</a>';
                 }).join("");
 
                 return [
-                    '<article class="card" tabindex="0">',
+                    '<article class="card featured-card" tabindex="0">',
                         image
-                            ? '<img class="game-image" src="' + image + '" alt="' + (game.title || "game") + ' cover" loading="lazy" />'
-                            : '<div class="game-image" role="img" aria-label="Placeholder image for ' + (game.title || "game") + '"></div>',
+                            ? '<img class="game-image" src="' + image + '" alt="' + escapeHtml(game.title || "game") + ' cover" loading="lazy" />'
+                            : '<div class="game-image" role="img" aria-label="Placeholder image for ' + escapeHtml(game.title || "game") + '"></div>',
                         '<div class="card-body">',
-                            '<h3>' + (game.title || "Untitled Game") + '</h3>',
-                            '<p>' + (game.description || "") + '</p>',
+                            '<span class="status-pill">Featured App Store Release</span>',
+                            '<h3>' + escapeHtml(game.title || "Untitled Game") + '</h3>',
+                            '<p>' + escapeHtml(game.description || "") + '</p>',
                             '<div class="tags">' + tags + '</div>',
                             '<div class="game-links">' + (linkHtml || '<span class="status-pill">Link coming soon</span>') + '</div>',
                         '</div>',
@@ -409,10 +1176,36 @@
                 })
                 .catch(function (error) {
                     if (error && error.status) {
-                        console.error('Games data fetch failed with status:', error.status);
+                        console.error("Games data fetch failed with status:", error.status);
                     }
                     grid.innerHTML = '<div class="panel">Could not load games right now. Please try again later.</div>';
                 });
+
+            function closeMenu() {
+                navToggle.setAttribute("aria-expanded", "false");
+                navLinks.classList.remove("is-open");
+            }
+
+            navToggle.addEventListener("click", function () {
+                const expanded = navToggle.getAttribute("aria-expanded") === "true";
+                navToggle.setAttribute("aria-expanded", String(!expanded));
+                navLinks.classList.toggle("is-open", !expanded);
+            });
+
+            navLinks.querySelectorAll("a").forEach(function (link) {
+                link.addEventListener("click", function () {
+                    if (window.innerWidth <= 768) {
+                        closeMenu();
+                    }
+                });
+            });
+
+            window.addEventListener("resize", function () {
+                if (window.innerWidth > 768) {
+                    navLinks.classList.remove("is-open");
+                    navToggle.setAttribute("aria-expanded", "false");
+                }
+            });
 
             const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
             if (!reducedMotion && "IntersectionObserver" in window) {
@@ -423,7 +1216,7 @@
                             observer.unobserve(entry.target);
                         }
                     });
-                }, { threshold: 0.2 });
+                }, { threshold: 0.18 });
 
                 document.querySelectorAll(".reveal").forEach(function (el) {
                     observer.observe(el);
