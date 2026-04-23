@@ -32,6 +32,7 @@
             --container: 1160px;
             --radius: 22px;
             --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+            --featured-art: url("/assets/colorful-words-cover.svg");
         }
 
         * { box-sizing: border-box; }
@@ -345,7 +346,7 @@
             border-radius: 18px;
             background:
                 linear-gradient(135deg, rgba(18, 30, 58, 0.96), rgba(10, 18, 36, 0.98)),
-                url('/assets/colorful-words-cover.svg') center/cover no-repeat;
+                var(--featured-art) center/cover no-repeat;
             border: 1px solid rgba(255, 255, 255, 0.08);
             padding: 18px;
         }
@@ -609,6 +610,14 @@
             text-transform: uppercase;
         }
 
+        .project-title {
+            margin-top: 14px;
+            font-size: 1.8rem;
+        }
+
+        .mt-16 { margin-top: 16px; }
+        .mt-18 { margin-top: 18px; }
+
         .detail-list,
         .meta-list {
             padding-left: 18px;
@@ -768,7 +777,7 @@
             <div class="hero-shell">
                 <div class="hero-layout">
                     <div>
-                        <span class="eyebrow">Available now on the App Store</span>
+                        <span class="eyebrow">Available Now on the App Store</span>
                         <h1 id="hero-title">Unity Game Developer specializing in puzzle &amp; systemic gameplay</h1>
                         <p class="hero-copy">
                             I build mobile puzzle experiences where simple rules create satisfying depth. My work focuses on solvable generation,
@@ -828,7 +837,7 @@
                 <div class="project-head">
                     <div>
                         <span class="status-pill">iOS / Mobile Puzzle</span>
-                        <h3 style="margin-top: 14px; font-size: 1.8rem;">Colorful Words: Reveal Puzzle</h3>
+                        <h3 class="project-title">Colorful Words: Reveal Puzzle</h3>
                         <p class="project-subtitle">
                             A mobile word-puzzle experience shaped around approachable rules, satisfying reveals, and replay-friendly short sessions.
                             The project balances content generation, puzzle clarity, and progression loops without losing responsiveness.
@@ -847,7 +856,7 @@
                             The core loop is built around discoverability, readable grid states, and satisfying reveal moments. I aim for a presentation that feels clean on first contact while still supporting deeper systemic design underneath.
                         </p>
                         <div class="showcase-screen">
-                            <img src="/assets/colorful-words-cover.svg" alt="Colorful Words puzzle showcase artwork" loading="lazy" />
+                            <img data-featured-art alt="Colorful Words puzzle showcase artwork" loading="lazy" />
                         </div>
                     </div>
                     <div class="detail-grid">
@@ -921,7 +930,7 @@
                     <p>Unity, C#, DOTween-style motion, Firebase-ready integrations, notifications, and optimization-minded implementation.</p>
                 </article>
             </div>
-            <div class="panel" style="margin-top: 18px;">
+            <div class="panel mt-18">
                 <p><strong>Example focus:</strong> building compact grid-based puzzle systems that stay readable, replayable, and solvable under real mobile constraints.</p>
             </div>
         </section>
@@ -1010,7 +1019,7 @@
                         The layout now supports a compact showcase block for puzzle footage, highlight captions, or a future embedded video without changing the rest of the homepage structure.
                     </p>
                     <div class="showcase-screen">
-                        <img src="/assets/colorful-words-cover.svg" alt="Portfolio showcase placeholder for Colorful Words reel" loading="lazy" />
+                        <img data-featured-art alt="Portfolio showcase placeholder for Colorful Words reel" loading="lazy" />
                     </div>
                 </article>
                 <article class="section-card">
@@ -1020,7 +1029,7 @@
                         <li>Mid-section callouts for solver-backed generation and daily loop structure.</li>
                         <li>Finish with App Store CTA and contact details for recruiters or collaborators.</li>
                     </ul>
-                    <div class="button-row" style="margin-top: 18px;">
+                    <div class="button-row mt-18">
                         <a class="button primary" href="https://apps.apple.com/tr/app/colorful-words-reveal-puzzle/id6761399233" target="_blank" rel="noopener noreferrer">Open App Store</a>
                         <a class="button secondary" href="#contact">Contact Me</a>
                     </div>
@@ -1054,7 +1063,7 @@
             <div class="resume-card">
                 <h3>Downloadable PDF</h3>
                 <p>Grab a short resume with focus areas, featured work, and contact details.</p>
-                <div class="button-row" style="margin-top: 18px;">
+                <div class="button-row mt-18">
                     <a class="button primary" href="/assets/alp-alkim-resume.pdf" download>Download Resume PDF</a>
                     <a class="button secondary" href="mailto:alpalkim@gmail.com">Request full CV</a>
                 </div>
@@ -1073,13 +1082,13 @@
                     <span class="label">Email</span>
                     <h3>alpalkim@gmail.com</h3>
                     <p>Best for business inquiries, collaboration, and portfolio conversations.</p>
-                    <a class="button secondary" style="margin-top: 16px;" href="mailto:alpalkim@gmail.com">Send Email</a>
+                    <a class="button secondary mt-16" href="mailto:alpalkim@gmail.com">Send Email</a>
                 </article>
                 <article class="contact-card">
                     <span class="label">Profiles</span>
                     <h3>GitHub &amp; support</h3>
                     <p>Browse code-related work or use the support form for app-specific questions.</p>
-                    <div class="button-row" style="margin-top: 16px;">
+                    <div class="button-row mt-16">
                         <a class="button secondary" href="https://github.com/alpalkim" target="_blank" rel="noopener noreferrer">GitHub</a>
                         <a class="button secondary" href="/support.html">Support Form</a>
                     </div>
@@ -1098,8 +1107,14 @@
             const year = document.getElementById("year");
             const navToggle = document.querySelector(".nav-toggle");
             const navLinks = document.getElementById("main-nav");
+            const FEATURED_ART_PATH = "/assets/colorful-words-cover.svg";
+            const MOBILE_BREAKPOINT = 768;
+            const REVEAL_THRESHOLD = 0.18;
 
             year.textContent = new Date().getFullYear();
+            document.querySelectorAll("[data-featured-art]").forEach(function (image) {
+                image.src = FEATURED_ART_PATH;
+            });
 
             const linkLabels = {
                 play: "App Store",
@@ -1194,14 +1209,14 @@
 
             navLinks.querySelectorAll("a").forEach(function (link) {
                 link.addEventListener("click", function () {
-                    if (window.innerWidth <= 768) {
+                    if (window.innerWidth <= MOBILE_BREAKPOINT) {
                         closeMenu();
                     }
                 });
             });
 
             window.addEventListener("resize", function () {
-                if (window.innerWidth > 768) {
+                if (window.innerWidth > MOBILE_BREAKPOINT) {
                     navLinks.classList.remove("is-open");
                     navToggle.setAttribute("aria-expanded", "false");
                 }
@@ -1216,7 +1231,7 @@
                             observer.unobserve(entry.target);
                         }
                     });
-                }, { threshold: 0.18 });
+                }, { threshold: REVEAL_THRESHOLD });
 
                 document.querySelectorAll(".reveal").forEach(function (el) {
                     observer.observe(el);
