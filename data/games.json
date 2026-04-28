@@ -1,14 +1,14 @@
 [
   {
     "title": "Colorful Words: Reveal Puzzle",
-    "description": "Solver-aware mobile word puzzle focused on readable board states, satisfying reveals, and short-session replayability.",
+    "description": "Mobile word puzzle built around clear board states, satisfying reveals, and repeatable short-session play.",
     "tech": [
       "Unity",
       "C#",
       "iOS",
-      "Puzzle Systems"
+      "Puzzle Design"
     ],
-    "image": "/assets/word-game-2026-icon.svg",
+    "image": "/assets/colorful-words-cover.svg",
     "links": {
       "play": "https://apps.apple.com/tr/app/colorful-words-reveal-puzzle/id6761399233",
       "github": "",

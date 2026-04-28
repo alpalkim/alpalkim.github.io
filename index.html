@@ -3,36 +3,36 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ALP ALKIM | Unity Puzzle Game Developer</title>
-    <meta name="description" content="Unity game developer specializing in puzzle systems, mobile gameplay, and polished player experiences." />
-    <meta name="theme-color" content="#0b1120" />
+    <title>ALP ALKIM | Unity Game Developer</title>
+    <meta name="description" content="Unity game developer building puzzle and mobile gameplay with clear UX, reliable systems, and production-ready execution." />
+    <meta name="theme-color" content="#f4f7ff" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="ALP ALKIM | Unity Puzzle Game Developer" />
-    <meta property="og:description" content="Puzzle gameplay systems, featured projects, and contact details for ALP ALKIM." />
+    <meta property="og:title" content="ALP ALKIM | Unity Game Developer" />
+    <meta property="og:description" content="Selected mobile game work, project notes, and contact details for ALP ALKIM." />
     <meta property="og:url" content="https://alpalkim.github.io/" />
     <meta property="og:site_name" content="ALP ALKIM" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="ALP ALKIM | Unity Puzzle Game Developer" />
-    <meta name="twitter:description" content="Puzzle gameplay systems, featured projects, and contact details for ALP ALKIM." />
+    <meta name="twitter:title" content="ALP ALKIM | Unity Game Developer" />
+    <meta name="twitter:description" content="Selected mobile game work, project notes, and contact details for ALP ALKIM." />
 
     <style>
         :root {
-            --bg: #070b16;
-            --surface: rgba(18, 26, 45, 0.92);
-            --surface-strong: rgba(26, 36, 61, 0.98);
-            --surface-soft: rgba(255, 255, 255, 0.05);
-            --text: #f5f7ff;
-            --muted: #b6c0de;
-            --accent: #7c9aff;
-            --accent-2: #48d6c6;
-            --accent-3: #ffb86b;
-            --border: rgba(255, 255, 255, 0.12);
-            --container: 1160px;
-            --radius: 22px;
-            --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
-            --featured-art: url("/assets/word-game-2026-icon.svg");
+            --bg: #f4f7ff;
+            --bg-soft: #edf3ff;
+            --surface: rgba(255, 255, 255, 0.88);
+            --surface-strong: #ffffff;
+            --surface-muted: #f2f6ff;
+            --text: #162033;
+            --muted: #55627d;
+            --accent: #5c6cff;
+            --accent-2: #1eb7a5;
+            --accent-3: #ff9a61;
+            --border: rgba(22, 32, 51, 0.12);
+            --shadow: 0 22px 60px rgba(77, 102, 160, 0.16);
+            --radius: 24px;
+            --container: 1120px;
         }
 
         * { box-sizing: border-box; }
@@ -42,67 +42,78 @@
             margin: 0;
             font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             color: var(--text);
+            line-height: 1.65;
             background:
-                radial-gradient(circle at 10% 10%, rgba(124, 154, 255, 0.2), transparent 30%),
-                radial-gradient(circle at 90% 20%, rgba(72, 214, 198, 0.14), transparent 25%),
-                linear-gradient(180deg, #0a1020 0%, #070b16 100%);
-            line-height: 1.6;
+                radial-gradient(circle at 0% 0%, rgba(92, 108, 255, 0.18), transparent 30%),
+                radial-gradient(circle at 100% 12%, rgba(30, 183, 165, 0.16), transparent 24%),
+                radial-gradient(circle at 50% 100%, rgba(255, 154, 97, 0.12), transparent 24%),
+                linear-gradient(180deg, #f8faff 0%, #eef4ff 100%);
         }
 
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image: linear-gradient(rgba(92, 108, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(92, 108, 255, 0.05) 1px, transparent 1px);
+            background-size: 26px 26px;
+            mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.22), transparent 72%);
+        }
+
+        img { max-width: 100%; display: block; }
         a { color: inherit; }
 
         .container {
-            max-width: var(--container);
+            width: min(100% - 32px, var(--container));
             margin: 0 auto;
-            padding: 0 20px;
         }
 
         .skip-link {
             position: absolute;
             left: -999px;
-            top: 12px;
-            background: #fff;
-            color: #000;
+            top: 16px;
             padding: 10px 14px;
             border-radius: 12px;
+            background: var(--surface-strong);
+            border: 1px solid var(--border);
             z-index: 999;
         }
 
-        .skip-link:focus { left: 12px; }
+        .skip-link:focus { left: 16px; }
 
         header {
             position: sticky;
             top: 0;
             z-index: 20;
-            backdrop-filter: blur(16px);
-            background: rgba(7, 11, 22, 0.78);
-            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(18px);
+            background: rgba(244, 247, 255, 0.8);
+            border-bottom: 1px solid rgba(22, 32, 51, 0.08);
         }
 
         .nav {
+            min-height: 76px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 16px;
-            min-height: 78px;
         }
 
         .brand {
-            font-weight: 800;
-            letter-spacing: 0.12em;
             text-decoration: none;
-            font-size: 0.95rem;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            font-size: 0.92rem;
         }
 
         .nav-toggle {
             display: none;
             align-items: center;
             justify-content: center;
-            width: 48px;
-            height: 48px;
+            width: 46px;
+            height: 46px;
             border-radius: 14px;
             border: 1px solid var(--border);
-            background: rgba(124, 154, 255, 0.08);
+            background: rgba(92, 108, 255, 0.08);
             color: var(--text);
             cursor: pointer;
         }
@@ -116,7 +127,8 @@
             border-radius: 999px;
             background: currentColor;
             position: relative;
-            transition: transform 0.25s ease, opacity 0.25s ease;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            margin: 0 auto;
         }
 
         .nav-toggle span::before,
@@ -128,7 +140,6 @@
 
         .nav-toggle span::before { top: -6px; }
         .nav-toggle span::after { top: 6px; }
-
         .nav-toggle[aria-expanded="true"] span { background: transparent; }
         .nav-toggle[aria-expanded="true"] span::before { transform: translateY(6px) rotate(45deg); }
         .nav-toggle[aria-expanded="true"] span::after { transform: translateY(-6px) rotate(-45deg); }
@@ -136,16 +147,20 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 0.95rem;
+            gap: 8px;
             color: var(--muted);
         }
 
-        .nav-links a {
+        .nav-links a,
+        .button,
+        .link-inline {
+            border-radius: 999px;
             text-decoration: none;
-            padding: 10px 12px;
-            border-radius: 12px;
-            transition: background-color 0.2s ease, color 0.2s ease;
+            transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+
+        .nav-links a {
+            padding: 10px 14px;
         }
 
         .nav-links a:hover,
@@ -153,188 +168,197 @@
         .button:hover,
         .button:focus-visible,
         .link-inline:hover,
-        .link-inline:focus-visible {
-            background: rgba(124, 154, 255, 0.16);
-            color: var(--text);
+        .link-inline:focus-visible,
+        .ttt-cell:hover,
+        .ttt-cell:focus-visible {
             outline: none;
+            transform: translateY(-1px);
         }
 
         main { padding-bottom: 72px; }
-        section { padding: 88px 0 0; }
+        section { padding-top: 84px; }
 
         .hero {
-            padding-top: 48px;
+            padding-top: 34px;
             animation: fade-up 0.8s ease both;
+        }
+
+        .hero-shell,
+        .project-highlight,
+        .panel,
+        .section-card,
+        .article-card,
+        .contact-card,
+        .play-lab,
+        .featured-card {
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--surface);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(16px);
         }
 
         .hero-shell {
             position: relative;
             overflow: hidden;
-            border: 1px solid var(--border);
-            border-radius: 32px;
-            box-shadow: var(--shadow);
-            background:
-                radial-gradient(circle at top left, rgba(124, 154, 255, 0.22), transparent 34%),
-                radial-gradient(circle at bottom right, rgba(72, 214, 198, 0.16), transparent 28%),
-                linear-gradient(145deg, rgba(16, 25, 46, 0.95), rgba(9, 14, 28, 0.98));
             padding: 34px;
+            background:
+                radial-gradient(circle at top left, rgba(92, 108, 255, 0.18), transparent 34%),
+                radial-gradient(circle at bottom right, rgba(30, 183, 165, 0.18), transparent 30%),
+                linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(242, 246, 255, 0.92));
         }
 
         .hero-shell::after {
             content: "";
             position: absolute;
-            inset: auto -60px -80px auto;
+            inset: auto -40px -40px auto;
             width: 220px;
             height: 220px;
             border-radius: 50%;
-            background: rgba(124, 154, 255, 0.16);
-            filter: blur(24px);
+            background: rgba(255, 154, 97, 0.22);
+            filter: blur(30px);
             pointer-events: none;
+        }
+
+        .hero-layout,
+        .project-columns,
+        .play-layout,
+        .contact-grid,
+        .article-grid,
+        .detail-grid {
+            display: grid;
+            gap: 20px;
         }
 
         .hero-layout {
             position: relative;
             z-index: 1;
-            display: grid;
-            grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
-            gap: 28px;
+            grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
             align-items: center;
         }
 
         .eyebrow,
         .status-pill,
-        .mini-pill {
+        .tag,
+        .score-pill {
             display: inline-flex;
             align-items: center;
             gap: 8px;
             width: fit-content;
+            padding: 8px 13px;
             border-radius: 999px;
-            border: 1px solid rgba(124, 154, 255, 0.3);
-            background: rgba(124, 154, 255, 0.12);
-            color: #e7edff;
-            padding: 7px 12px;
-            font-size: 0.82rem;
+            border: 1px solid rgba(92, 108, 255, 0.16);
+            background: rgba(92, 108, 255, 0.08);
+            color: #334064;
+            font-size: 0.84rem;
         }
 
         .hero h1 {
             margin: 18px 0 0;
-            font-size: clamp(2.4rem, 6vw, 4.6rem);
-            line-height: 1.02;
+            font-size: clamp(2.5rem, 6vw, 4.8rem);
+            line-height: 0.98;
             max-width: 11ch;
+        }
+
+        .hero-copy,
+        .section-lead,
+        .card p,
+        .panel p,
+        .article-card p,
+        .section-card p,
+        .contact-card p,
+        .ttt-status,
+        .detail-list,
+        .meta-list {
+            color: var(--muted);
         }
 
         .hero-copy {
             margin: 18px 0 0;
-            color: var(--muted);
-            font-size: 1.08rem;
             max-width: 58ch;
+            font-size: 1.05rem;
         }
 
         .hero-actions,
-        .socials,
         .button-row,
-        .mini-pills {
+        .hero-points,
+        .hero-meta,
+        .scoreboard {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
         }
 
-        .hero-actions { margin-top: 24px; }
+        .hero-actions,
+        .hero-points,
+        .hero-meta { margin-top: 24px; }
+
         .hero-points {
-            margin: 26px 0 0;
-            padding: 0;
             list-style: none;
-            display: grid;
-            gap: 10px;
-            color: var(--muted);
+            padding: 0;
+            margin-bottom: 0;
         }
 
         .hero-points li {
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
+            padding: 10px 14px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.58);
+            border: 1px solid rgba(22, 32, 51, 0.08);
+            color: var(--muted);
         }
 
-        .hero-points li::before {
-            content: "◆";
-            color: var(--accent-2);
-            font-size: 0.85rem;
-            line-height: 1.8;
-        }
-
-        .button,
-        .link-inline {
+        .button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            text-decoration: none;
-            padding: 11px 16px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            background: rgba(124, 154, 255, 0.08);
             min-height: 46px;
-            transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
-        }
-
-        .button:hover,
-        .button:focus-visible,
-        .link-inline:hover,
-        .link-inline:focus-visible {
-            transform: translateY(-2px);
-            border-color: rgba(124, 154, 255, 0.4);
+            padding: 11px 18px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.66);
         }
 
         .button.primary {
-            background: linear-gradient(135deg, rgba(124, 154, 255, 0.95), rgba(72, 214, 198, 0.95));
-            color: #06101e;
             border: none;
-            font-weight: 700;
+            color: white;
+            background: linear-gradient(135deg, var(--accent), #7a7cff);
+            box-shadow: 0 14px 28px rgba(92, 108, 255, 0.22);
         }
 
         .button.secondary {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .hero-media,
-        .media-card,
-        .section-card,
-        .panel,
-        .article-card,
-        .system-card,
-        .project-highlight,
-        .resume-card,
-        .contact-card {
-            background: linear-gradient(160deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
+            background: rgba(255, 255, 255, 0.7);
         }
 
         .hero-media {
-            padding: 18px;
             position: relative;
-            overflow: hidden;
+            padding: 18px;
+            border-radius: 28px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(239, 245, 255, 0.9));
+            border: 1px solid rgba(22, 32, 51, 0.08);
         }
 
         .hero-media::before {
             content: "";
             position: absolute;
-            inset: 12px 12px auto auto;
-            width: 130px;
-            height: 130px;
+            inset: 14px auto auto 16px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
-            background: rgba(72, 214, 198, 0.18);
-            filter: blur(20px);
+            background: rgba(30, 183, 165, 0.14);
+            filter: blur(26px);
             pointer-events: none;
         }
 
-        .media-topline {
+        .media-topline,
+        .section-header {
             display: flex;
             justify-content: space-between;
-            gap: 12px;
-            align-items: center;
-            margin-bottom: 14px;
+            gap: 18px;
+            align-items: end;
+        }
+
+        .media-topline {
+            margin-bottom: 16px;
             color: var(--muted);
             font-size: 0.92rem;
         }
@@ -342,138 +366,71 @@
         .preview-shell {
             position: relative;
             overflow: hidden;
-            min-height: 360px;
-            border-radius: 18px;
-            background:
-                linear-gradient(135deg, rgba(18, 30, 58, 0.96), rgba(10, 18, 36, 0.98)),
-                var(--featured-art) center/cover no-repeat;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 22px;
+            background: linear-gradient(145deg, #fefeff, #eaf1ff);
+            border: 1px solid rgba(22, 32, 51, 0.08);
             padding: 18px;
         }
 
-        .preview-shell::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(5, 8, 18, 0.05), rgba(5, 8, 18, 0.62));
+        .preview-shell img {
+            width: 100%;
+            border-radius: 18px;
+            border: 1px solid rgba(22, 32, 51, 0.08);
+            background: #f3f7ff;
         }
 
-        .preview-shell > * {
-            position: relative;
-            z-index: 1;
-        }
+        .hero-meta { margin-top: 16px; }
 
-        .preview-ui {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 324px;
-        }
-
-        .mini-pills { gap: 10px; }
-
-        .mini-pill {
-            background: rgba(7, 11, 22, 0.56);
-            backdrop-filter: blur(6px);
-            border-color: rgba(255, 255, 255, 0.12);
-        }
-
-        .puzzle-board {
-            width: min(100%, 290px);
-            aspect-ratio: 1;
-            margin: 0 auto;
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            background:
-                linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-                linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-            background-size: auto, calc(100% / 6) calc(100% / 6), calc(100% / 6) calc(100% / 6);
-            background-position: center;
-            position: relative;
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
-            animation: float 5s ease-in-out infinite;
-        }
-
-        .puzzle-board::before,
-        .puzzle-board::after {
-            content: "";
-            position: absolute;
-            inset: 16% auto auto 16%;
-            width: 18%;
-            aspect-ratio: 1;
-            border-radius: 16px;
-            background: linear-gradient(135deg, rgba(124, 154, 255, 0.92), rgba(72, 214, 198, 0.74));
-            box-shadow: 88px 0 0 rgba(255, 184, 107, 0.88), 176px 88px 0 rgba(124, 154, 255, 0.75), 88px 176px 0 rgba(72, 214, 198, 0.8), 0 176px 0 rgba(255, 184, 107, 0.84);
-            animation: pulse 3.6s ease-in-out infinite;
-        }
-
-        .puzzle-board::after {
-            inset: 33% auto auto 33%;
-            width: 18%;
-            background: rgba(255, 255, 255, 0.14);
-            box-shadow: 88px 0 0 rgba(255, 255, 255, 0.1), 0 88px 0 rgba(255, 255, 255, 0.1), 176px 0 0 rgba(255, 255, 255, 0.12), 176px 176px 0 rgba(255, 255, 255, 0.08);
-            animation-delay: -1.8s;
-        }
-
-        .board-caption {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
+        .hero-note {
+            margin: 16px 0 0;
+            padding: 14px 16px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(22, 32, 51, 0.08);
             color: var(--muted);
-            font-size: 0.88rem;
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            gap: 18px;
-            align-items: end;
-            margin-bottom: 24px;
         }
 
         .section-title {
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
             margin: 0;
+            font-size: clamp(1.9rem, 4vw, 2.7rem);
         }
 
         .section-lead {
             margin: 10px 0 0;
             max-width: 62ch;
-            color: var(--muted);
         }
 
-        #games-grid {
+        #games-grid,
+        .article-grid,
+        .detail-grid {
             display: grid;
-            grid-template-columns: minmax(0, 1fr);
             gap: 18px;
         }
 
         .card {
             display: grid;
-            grid-template-columns: minmax(0, 330px) minmax(0, 1fr);
-            gap: 0;
+            grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
             overflow: hidden;
-        }
-
-        .featured-card {
-            background: linear-gradient(160deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
         }
 
         .game-image {
             width: 100%;
             height: 100%;
-            min-height: 100%;
             object-fit: cover;
-            display: block;
-            background: linear-gradient(140deg, #233155, #0f172c);
+            background: linear-gradient(145deg, #edf3ff, #dfe8ff);
+        }
+
+        .card-body,
+        .project-highlight,
+        .section-card,
+        .article-card,
+        .contact-card,
+        .play-lab,
+        .panel {
+            padding: 24px;
         }
 
         .card-body {
-            padding: 24px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -481,149 +438,66 @@
         }
 
         .card h3,
-        .media-card h3,
+        .project-title,
+        .section-card h3,
         .article-card h3,
-        .system-card h3,
-        .resume-card h3,
-        .contact-card h3 {
+        .contact-card h3,
+        .play-lab h3 {
             margin: 0;
-            font-size: 1.3rem;
-        }
-
-        .card p,
-        .panel p,
-        .article-card p,
-        .system-card p,
-        .resume-card p,
-        .contact-card p,
-        .meta-list,
-        .detail-list {
-            margin: 0;
-            color: var(--muted);
+            font-size: 1.32rem;
         }
 
         .tags,
-        .meta-list,
-        .detail-grid,
-        .cards-grid,
-        .article-grid,
-        .system-grid,
-        .contact-grid,
-        .project-columns {
-            display: grid;
-            gap: 16px;
+        .detail-list,
+        .meta-list {
+            margin: 0;
         }
 
-        .tags {
+        .tags,
+        .game-links {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
         }
 
         .tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            width: fit-content;
-            padding: 6px 11px;
-            border-radius: 999px;
-            border: 1px solid rgba(72, 214, 198, 0.35);
-            background: rgba(72, 214, 198, 0.12);
-            color: #d7fff7;
-            font-size: 0.82rem;
+            background: rgba(30, 183, 165, 0.08);
+            border-color: rgba(30, 183, 165, 0.22);
+            color: #1f5d57;
         }
-
-        .game-links,
-        .button-row { display: flex; flex-wrap: wrap; gap: 10px; }
 
         .project-highlight {
-            padding: 26px;
-            display: grid;
-            gap: 22px;
+            gap: 24px;
         }
 
-        .project-head {
-            display: flex;
-            justify-content: space-between;
-            gap: 18px;
-            align-items: start;
-        }
+        .project-title { font-size: 1.8rem; margin-top: 10px; }
+        .project-subtitle { margin: 10px 0 0; color: var(--muted); max-width: 64ch; }
 
-        .project-subtitle {
-            margin-top: 10px;
-            color: var(--muted);
-            max-width: 65ch;
-        }
-
-        .project-columns {
-            grid-template-columns: 1.05fr 0.95fr;
+        .project-columns,
+        .play-layout {
+            grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
             align-items: stretch;
-        }
-
-        .media-card,
-        .section-card,
-        .panel,
-        .article-card,
-        .system-card,
-        .resume-card,
-        .contact-card {
-            padding: 22px;
         }
 
         .showcase-screen {
             margin-top: 18px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
             overflow: hidden;
-            background: linear-gradient(140deg, rgba(22, 33, 59, 0.98), rgba(8, 14, 28, 0.98));
+            border-radius: 20px;
+            border: 1px solid rgba(22, 32, 51, 0.08);
+            background: linear-gradient(145deg, #fefeff, #edf3ff);
         }
 
         .showcase-screen img {
             width: 100%;
-            display: block;
             aspect-ratio: 16 / 10;
             object-fit: cover;
         }
 
-        .showcase-screen iframe {
-            width: 100%;
-            display: block;
-            aspect-ratio: 16 / 9;
-            border: 0;
-        }
-
         .detail-grid,
-        .cards-grid,
         .article-grid,
-        .system-grid,
         .contact-grid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
         }
-
-        .section-card,
-        .article-card,
-        .system-card,
-        .resume-card,
-        .contact-card {
-            min-height: 100%;
-        }
-
-        .label {
-            display: inline-block;
-            margin-bottom: 12px;
-            color: var(--accent-2);
-            font-size: 0.84rem;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-        }
-
-        .project-title {
-            margin-top: 14px;
-            font-size: 1.8rem;
-        }
-
-        .mt-16 { margin-top: 16px; }
-        .mt-18 { margin-top: 18px; }
 
         .detail-list,
         .meta-list {
@@ -633,18 +507,75 @@
         .detail-list li,
         .meta-list li { margin-bottom: 10px; }
 
-        .section-card strong,
-        .system-card strong,
-        .article-card strong { color: var(--text); }
+        .label {
+            display: inline-block;
+            margin-bottom: 12px;
+            color: var(--accent-2);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
 
         .link-inline {
-            width: fit-content;
-            padding-inline: 0;
-            min-height: auto;
-            border: none;
-            background: transparent;
-            border-radius: 0;
+            color: var(--accent);
+            text-decoration: none;
         }
+
+        .play-lab {
+            background:
+                radial-gradient(circle at top right, rgba(92, 108, 255, 0.14), transparent 32%),
+                linear-gradient(160deg, rgba(255, 255, 255, 0.92), rgba(242, 246, 255, 0.92));
+        }
+
+        .scoreboard { margin-top: 18px; }
+
+        .score-pill {
+            background: rgba(255, 255, 255, 0.7);
+            border-color: rgba(22, 32, 51, 0.08);
+        }
+
+        .ttt-panel {
+            padding: 20px;
+            border-radius: 22px;
+            border: 1px solid rgba(22, 32, 51, 0.08);
+            background: rgba(255, 255, 255, 0.76);
+        }
+
+        .ttt-status {
+            margin: 0;
+            min-height: 28px;
+            font-weight: 600;
+        }
+
+        .ttt-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .ttt-cell {
+            aspect-ratio: 1;
+            border: 1px solid rgba(22, 32, 51, 0.1);
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.9);
+            font: inherit;
+            font-size: clamp(1.7rem, 4vw, 2.4rem);
+            font-weight: 800;
+            color: var(--accent);
+            cursor: pointer;
+        }
+
+        .ttt-cell[disabled] {
+            cursor: default;
+            opacity: 1;
+        }
+
+        .ttt-cell[data-mark="O"] { color: var(--accent-2); }
+        .ttt-cell[data-mark="X"] { color: var(--accent-3); }
+
+        .ttt-actions { margin-top: 18px; }
 
         .footer {
             padding: 30px 0 42px;
@@ -668,84 +599,58 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.6; }
-        }
-
         @media (max-width: 960px) {
             .hero-layout,
-            .project-columns,
             .card,
+            .project-columns,
+            .play-layout,
             .detail-grid,
-            .cards-grid,
             .article-grid,
-            .system-grid,
             .contact-grid {
                 grid-template-columns: 1fr;
             }
 
-            .hero h1 { max-width: 14ch; }
             .section-header,
-            .project-head {
+            .media-topline {
                 flex-direction: column;
                 align-items: start;
             }
         }
 
         @media (max-width: 768px) {
-            .nav {
-                min-height: 72px;
-                align-items: center;
-            }
-
             .nav-toggle { display: inline-flex; }
 
             .nav-links {
+                display: none;
                 position: absolute;
                 top: calc(100% + 10px);
-                left: 20px;
-                right: 20px;
-                display: none;
+                left: 16px;
+                right: 16px;
                 flex-direction: column;
                 align-items: stretch;
-                gap: 8px;
                 padding: 16px;
-                border-radius: 18px;
                 border: 1px solid var(--border);
-                background: rgba(7, 11, 22, 0.97);
+                border-radius: 20px;
+                background: rgba(255, 255, 255, 0.95);
                 box-shadow: var(--shadow);
             }
 
             .nav-links.is-open { display: flex; }
             .nav-links a { width: 100%; }
-
-            .hero-shell { padding: 26px 20px; border-radius: 26px; }
-            section { padding-top: 74px; }
-            .hero { padding-top: 26px; }
-            .preview-shell { min-height: 310px; }
-            .preview-ui { min-height: 274px; }
+            .hero-shell { padding: 24px 20px; }
+            .hero h1 { max-width: 13ch; }
+            section { padding-top: 72px; }
         }
 
         @media (max-width: 560px) {
-            .container { padding: 0 16px; }
-            .hero h1 { font-size: clamp(2rem, 12vw, 3.1rem); }
             .card-body,
-            .media-card,
-            .section-card,
-            .panel,
-            .article-card,
-            .system-card,
             .project-highlight,
-            .resume-card,
-            .contact-card { padding: 18px; }
-            .puzzle-board::before { box-shadow: 64px 0 0 rgba(255, 184, 107, 0.88), 128px 64px 0 rgba(124, 154, 255, 0.75), 64px 128px 0 rgba(72, 214, 198, 0.8), 0 128px 0 rgba(255, 184, 107, 0.84); }
-            .puzzle-board::after { box-shadow: 64px 0 0 rgba(255, 255, 255, 0.1), 0 64px 0 rgba(255, 255, 255, 0.1), 128px 0 0 rgba(255, 255, 255, 0.12), 128px 128px 0 rgba(255, 255, 255, 0.08); }
+            .section-card,
+            .article-card,
+            .contact-card,
+            .play-lab,
+            .panel,
+            .ttt-panel { padding: 18px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -769,10 +674,8 @@
             </button>
             <nav id="main-nav" class="nav-links" aria-label="Main navigation">
                 <a href="#projects">Projects</a>
-                <a href="#skills">Skills</a>
                 <a href="#experience">Experience</a>
-                <a href="#systems">Systems</a>
-                <a href="#showcase">Showcase</a>
+                <a href="#play-lab">Play Lab</a>
                 <a href="#about">About</a>
                 <a href="#contact">Contact</a>
             </nav>
@@ -784,40 +687,38 @@
             <div class="hero-shell">
                 <div class="hero-layout">
                     <div>
-                        <span class="eyebrow">Available Now on the App Store</span>
-                        <h1 id="hero-title">Unity Game Developer specializing in puzzle &amp; systemic gameplay</h1>
+                        <span class="eyebrow">Unity developer focused on mobile puzzle games</span>
+                        <h1 id="hero-title">Clear gameplay, reliable systems, and thoughtful execution.</h1>
                         <p class="hero-copy">
-                            I build mobile puzzle experiences where simple rules create satisfying depth. My work focuses on solvable generation,
-                            daily challenge loops, and polished UX that keeps players coming back.
+                            I build puzzle experiences for mobile with an emphasis on readable interaction, consistent logic, and production-ready delivery.
+                            My work spans gameplay design, implementation, iteration, and release support.
                         </p>
                         <div class="hero-actions">
-                            <a class="button primary" href="#projects">View Projects</a>
-                            <a class="button secondary" href="#contact">Contact Me</a>
+                            <a class="button primary" href="#projects">View selected work</a>
+                            <a class="button secondary" href="#contact">Start a conversation</a>
                         </div>
-                        <ul class="hero-points">
-                            <li>Designing puzzle logic, solver-backed content, and replayable daily systems in Unity.</li>
-                            <li>Bringing systemic gameplay to mobile with DOTween feel, Firebase hooks, and live-ops friendly structure.</li>
-                            <li>Obsessed with making elegant rulesets feel readable, responsive, and rewarding.</li>
-                        </ul>
+                        <div class="hero-points" aria-label="Core strengths">
+                            <span class="status-pill">Puzzle generation and validation</span>
+                            <span class="status-pill">Mobile-first UX refinement</span>
+                            <span class="status-pill">Release-minded Unity production</span>
+                        </div>
                     </div>
-                    <aside class="hero-media" aria-label="Highlighted gameplay systems">
+                    <aside class="hero-media" aria-label="Featured app summary">
                         <div class="media-topline">
-                            <span>Featured App</span>
+                            <span>Featured release</span>
                             <span>Colorful Words: Reveal Puzzle</span>
                         </div>
                         <div class="preview-shell">
-                            <div class="preview-ui">
-                                <div class="mini-pills">
-                                    <span class="mini-pill">Solver-backed levels</span>
-                                    <span class="mini-pill">Daily streak loop</span>
-                                </div>
-                                <div class="puzzle-board" aria-hidden="true"></div>
-                                <div class="board-caption">
-                                    <span>Constraint-based puzzle flow</span>
-                                    <span>6x6 readability-first layout</span>
-                                </div>
-                            </div>
+                            <img src="/assets/colorful-words-cover.svg" data-featured-art alt="Colorful Words: Reveal Puzzle artwork" loading="lazy" />
                         </div>
+                        <div class="hero-meta" aria-label="Project highlights">
+                            <span class="status-pill">iOS</span>
+                            <span class="status-pill">Word puzzle</span>
+                            <span class="status-pill">Daily challenge loop</span>
+                        </div>
+                        <p class="hero-note">
+                            A concise portfolio version of the project: the live release, the main contribution areas, and the production habits behind the work.
+                        </p>
                     </aside>
                 </div>
             </div>
@@ -826,8 +727,8 @@
         <section id="games" class="reveal" aria-labelledby="games-title">
             <div class="section-header">
                 <div>
-                    <h2 id="games-title" class="section-title">Featured Game</h2>
-                    <p class="section-lead">A focused showcase: one polished puzzle title with clear gameplay, systems thinking, and mobile-ready execution.</p>
+                    <h2 id="games-title" class="section-title">Featured Release</h2>
+                    <p class="section-lead">One focused project card keeps the homepage simple while still showing a shipped title.</p>
                 </div>
             </div>
             <div id="games-grid" aria-live="polite"></div>
@@ -836,125 +737,74 @@
         <section id="projects" class="reveal" aria-labelledby="projects-title">
             <div class="section-header">
                 <div>
-                    <h2 id="projects-title" class="section-title">Featured Project Breakdown</h2>
-                    <p class="section-lead">Less volume, more depth. This section focuses on the project, systems, and decisions that best represent how I work.</p>
+                    <h2 id="projects-title" class="section-title">Project Notes</h2>
+                    <p class="section-lead">A short breakdown of the work, not a long list of buzzwords.</p>
                 </div>
             </div>
             <article class="project-highlight">
-                <div class="project-head">
-                    <div>
-                        <span class="status-pill">iOS / Mobile Puzzle</span>
-                        <h3 class="project-title">Colorful Words: Reveal Puzzle</h3>
-                        <p class="project-subtitle">
-                            A mobile word-puzzle experience shaped around approachable rules, satisfying reveals, and replay-friendly short sessions.
-                            The project balances content generation, puzzle clarity, and progression loops without losing responsiveness.
-                        </p>
-                    </div>
-                    <div class="button-row">
-                        <a class="button primary" href="https://apps.apple.com/tr/app/colorful-words-reveal-puzzle/id6761399233" target="_blank" rel="noopener noreferrer">App Store</a>
-                        <a class="button secondary" href="/privacy-policy/word-reveal.html">Privacy Policy</a>
-                    </div>
+                <div>
+                    <span class="label">Colorful Words: Reveal Puzzle</span>
+                    <h3 class="project-title">Puzzle design supported by practical production work.</h3>
+                    <p class="project-subtitle">
+                        I contributed to the project from the perspective of both player clarity and delivery discipline: keeping the board readable,
+                        validating content, and making sure repeat sessions stayed smooth on mobile.
+                    </p>
                 </div>
                 <div class="project-columns">
-                    <div class="media-card">
-                        <span class="label">Gameplay showcase</span>
-                        <h3>Puzzle feel with systems under the hood</h3>
-                        <p>
-                            The core loop is built around discoverability, readable grid states, and satisfying reveal moments. I aim for a presentation that feels clean on first contact while still supporting deeper systemic design underneath.
-                        </p>
-                        <div class="showcase-screen">
-                            <img data-featured-art alt="Colorful Words puzzle showcase artwork" loading="lazy" />
-                        </div>
+                    <div class="section-card">
+                        <span class="label">Contribution</span>
+                        <ul class="detail-list">
+                            <li>Built gameplay flows that keep puzzle states fair, understandable, and finishable.</li>
+                            <li>Refined interaction feedback and UI behavior for short, repeatable mobile sessions.</li>
+                            <li>Supported retention features such as daily play loops without overwhelming the core rules.</li>
+                        </ul>
                     </div>
                     <div class="detail-grid">
                         <div class="section-card">
-                            <span class="label">My contribution</span>
-                            <ul class="detail-list">
-                                <li>Built puzzle generation flows with solver-aware validation to keep levels fair and finishable.</li>
-                                <li>Shaped the gameplay UX with feedback loops, UI motion, and readability-first interactions.</li>
-                                <li>Structured daily puzzle and streak-friendly loops to support retention without bloating the core rules.</li>
-                                <li>Focused on mobile responsiveness and efficient content flows for repeat play.</li>
-                            </ul>
-                        </div>
-                        <div class="section-card">
-                            <span class="label">Tools &amp; tech</span>
+                            <span class="label">Toolset</span>
                             <div class="tags">
                                 <span class="tag">Unity</span>
                                 <span class="tag">C#</span>
-                                <span class="tag">DOTween-style UI feel</span>
-                                <span class="tag">Firebase-ready</span>
-                                <span class="tag">Mobile optimization</span>
+                                <span class="tag">Mobile UX</span>
+                                <span class="tag">Optimization</span>
                             </div>
                         </div>
                         <div class="section-card">
-                            <span class="label">Problem &amp; solution</span>
-                            <ul class="detail-list">
-                                <li><strong>Solvability risk:</strong> custom validation flow keeps generated puzzles consistent with player expectations.</li>
-                                <li><strong>Session friction:</strong> lightweight progression and streak structure support repeat daily play.</li>
-                                <li><strong>Mobile clarity:</strong> UI hierarchy and readable board states reduce confusion during short sessions.</li>
-                            </ul>
+                            <span class="label">Release focus</span>
+                            <p>Keep the player-facing experience simple while the underlying logic stays dependable and easy to extend.</p>
                         </div>
                         <div class="section-card">
-                            <span class="label">Platform &amp; links</span>
-                            <ul class="meta-list">
-                                <li><strong>Platform:</strong> iOS</li>
-                                <li><strong>Format:</strong> Mobile puzzle / short sessions</li>
-                                <li><strong>Live link:</strong> <a class="link-inline" href="https://apps.apple.com/tr/app/colorful-words-reveal-puzzle/id6761399233" target="_blank" rel="noopener noreferrer">Open App Store page</a></li>
-                                <li><strong>Video:</strong> <a class="link-inline" href="https://www.youtube.com/watch?v=bpxCqTPN2e0" target="_blank" rel="noopener noreferrer">Watch the Radmule Labs trailer</a></li>
-                            </ul>
+                            <span class="label">Project link</span>
+                            <p>The public release is available on the App Store.</p>
+                            <div class="button-row">
+                                <a class="button primary" href="https://apps.apple.com/tr/app/colorful-words-reveal-puzzle/id6761399233" target="_blank" rel="noopener noreferrer">Open App Store</a>
+                            </div>
+                        </div>
+                        <div class="section-card">
+                            <span class="label">Visual reference</span>
+                            <p>The artwork below is used as the project visual throughout the homepage to keep the presentation consistent.</p>
+                            <div class="showcase-screen">
+                                <img src="/assets/colorful-words-cover.svg" data-featured-art alt="Colorful Words project artwork" loading="lazy" />
+                            </div>
                         </div>
                     </div>
                 </div>
             </article>
         </section>
 
-        <section id="skills" class="reveal" aria-labelledby="skills-title">
-            <div class="section-header">
-                <div>
-                    <h2 id="skills-title" class="section-title">Technical Strengths</h2>
-                    <p class="section-lead">Not a star list. These are the kinds of problems and systems I enjoy building most.</p>
-                </div>
-            </div>
-            <div class="cards-grid">
-                <article class="section-card">
-                    <span class="label">Gameplay systems</span>
-                    <h3>Puzzle logic &amp; rulesets</h3>
-                    <p>Constraint-driven gameplay, readable progression, and systems where a few simple rules can generate a lot of depth.</p>
-                </article>
-                <article class="section-card">
-                    <span class="label">Content structure</span>
-                    <h3>Procedural generation</h3>
-                    <p>Level flow design with solvability checks, repeatable puzzle generation, and logic that supports long-term content needs.</p>
-                </article>
-                <article class="section-card">
-                    <span class="label">Mobile craft</span>
-                    <h3>Retention-ready UX</h3>
-                    <p>Daily puzzle systems, streak mechanics, session-friendly pacing, and polished interactions built for phones first.</p>
-                </article>
-                <article class="section-card">
-                    <span class="label">Tools &amp; tech</span>
-                    <h3>Unity stack</h3>
-                    <p>Unity, C#, DOTween-style motion, Firebase-ready integrations, notifications, and optimization-minded implementation.</p>
-                </article>
-            </div>
-            <div class="panel mt-18">
-                <p><strong>Example focus:</strong> building compact grid-based puzzle systems that stay readable, replayable, and solvable under real mobile constraints.</p>
-            </div>
-        </section>
-
         <section id="experience" class="reveal" aria-labelledby="experience-title">
             <div class="section-header">
                 <div>
-                    <h2 id="experience-title" class="section-title">Studio Experience</h2>
-                    <p class="section-lead">A quick view of shipped mobile work, QA experience, and previous teams that shaped how I build and test games.</p>
+                    <h2 id="experience-title" class="section-title">Experience</h2>
+                    <p class="section-lead">A compact view of the teams and projects that shaped how I ship work.</p>
                 </div>
             </div>
             <div class="article-grid">
                 <article class="article-card">
                     <span class="label">Wixot</span>
-                    <h3>Shipped mobile puzzle titles</h3>
-                    <p>I worked on multiple casual and puzzle-focused mobile releases, helping bring polished word and brain-training experiences to market.</p>
-                    <ul class="detail-list mt-16">
+                    <h3>Mobile puzzle releases</h3>
+                    <p>I worked on casual and puzzle-focused mobile titles, contributing to gameplay implementation and player-facing polish.</p>
+                    <ul class="detail-list">
                         <li><a class="link-inline" href="https://apps.apple.com/tr/app/word-solitaire-connections/id6755479591" target="_blank" rel="noopener noreferrer">Word Solitaire Connections</a></li>
                         <li><a class="link-inline" href="https://apps.apple.com/tr/app/kelimix/id6747683712" target="_blank" rel="noopener noreferrer">Kelimix</a></li>
                         <li><a class="link-inline" href="https://apps.apple.com/tr/app/crossword-colorful/id6744316896" target="_blank" rel="noopener noreferrer">Crossword Colorful</a></li>
@@ -964,112 +814,79 @@
                 </article>
                 <article class="article-card">
                     <span class="label">STCPay</span>
-                    <h3>QA at a scaling fintech product</h3>
-                    <p>I worked in QA at STCPay during a major growth phase, contributing to product quality while the company became a unicorn and later evolved into a bank.</p>
+                    <h3>QA in a high-growth product environment</h3>
+                    <p>I supported product quality during a rapid growth period, strengthening my approach to testing, stability, and release confidence.</p>
                 </article>
                 <article class="article-card">
                     <span class="label">Radmule Labs</span>
-                    <h3>Playable trailer available</h3>
-                    <p>For the Radmule Labs project, the public-facing material is currently a YouTube video that captures the game direction and presentation.</p>
-                    <a class="button secondary mt-16" href="https://www.youtube.com/watch?v=bpxCqTPN2e0" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+                    <h3>Project reference video</h3>
+                    <p>The public material for this project is currently a trailer, so it is presented here as a project reference rather than a personal profile link.</p>
+                    <div class="button-row">
+                        <a class="button secondary" href="https://www.youtube.com/watch?v=bpxCqTPN2e0" target="_blank" rel="noopener noreferrer">Open project video</a>
+                    </div>
                 </article>
                 <article class="article-card">
-                    <span class="label">Focus</span>
-                    <h3>What carries across teams</h3>
-                    <p>Across games and QA work, I care most about player-facing polish, reliable systems, and shipping features that stay stable under real production pressure.</p>
+                    <span class="label">Working style</span>
+                    <h3>What stays consistent</h3>
+                    <p>Readable gameplay, measured iteration, and features that are sturdy enough to survive real production constraints.</p>
                 </article>
             </div>
         </section>
 
-        <section id="systems" class="reveal" aria-labelledby="systems-title">
+        <section id="play-lab" class="reveal" aria-labelledby="play-lab-title">
             <div class="section-header">
                 <div>
-                    <h2 id="systems-title" class="section-title">Highlighted Systems</h2>
-                    <p class="section-lead">Project-independent case studies help show the systems mindset behind the shipped work.</p>
+                    <h2 id="play-lab-title" class="section-title">Play Lab</h2>
+                    <p class="section-lead">A small interactive touch keeps the page lively without making it noisy.</p>
                 </div>
             </div>
-            <div class="system-grid">
-                <article class="system-card">
-                    <span class="label">Case study</span>
-                    <h3>Puzzle solver system</h3>
-                    <p><strong>Problem:</strong> random generation can create unsatisfying or invalid states.</p>
-                    <p><strong>Approach:</strong> validate generated boards with rule-aware solving logic before surfacing them to players.</p>
-                    <p><strong>Result:</strong> stronger trust in puzzle fairness and a cleaner content pipeline.</p>
-                </article>
-                <article class="system-card">
-                    <span class="label">Case study</span>
-                    <h3>Daily challenge loop</h3>
-                    <p><strong>Problem:</strong> retention systems can feel bolted on if they fight the core loop.</p>
-                    <p><strong>Approach:</strong> keep the daily ritual lightweight, readable, and connected to streak momentum.</p>
-                    <p><strong>Result:</strong> repeatable reasons to return without overcomplicating the puzzle itself.</p>
-                </article>
-                <article class="system-card">
-                    <span class="label">Case study</span>
-                    <h3>Mobile performance pass</h3>
-                    <p><strong>Problem:</strong> small frame hitches make puzzle games feel cheap.</p>
-                    <p><strong>Approach:</strong> optimize content refreshes, keep UI motion intentional, and reduce needless churn.</p>
-                    <p><strong>Result:</strong> smoother interaction feel and more consistent polish on mobile hardware.</p>
-                </article>
-                <article class="system-card">
-                    <span class="label">Showcase area</span>
-                    <h3>Portfolio video support</h3>
-                    <p>The homepage now includes a live YouTube embed and still leaves room to add more gameplay clips or short reels over time.</p>
-                    <a class="button secondary" href="#showcase">Open the video section</a>
-                </article>
-            </div>
-        </section>
-
-        <section id="showcase" class="reveal" aria-labelledby="showcase-title">
-            <div class="section-header">
-                <div>
-                    <h2 id="showcase-title" class="section-title">Video Showcase</h2>
-                    <p class="section-lead">A live embed makes it easier to share gameplay quickly while keeping room for more videos later.</p>
+            <div class="play-lab">
+                <div class="play-layout">
+                    <div>
+                        <span class="label">Mini game</span>
+                        <h3>Tic-tac-toe</h3>
+                        <p>
+                            A lightweight break built directly into the portfolio. You play as X, the site responds as O,
+                            and the rules stay intentionally simple.
+                        </p>
+                        <div class="scoreboard" aria-label="Tic-tac-toe scores">
+                            <span class="score-pill">You: <strong id="score-player">0</strong></span>
+                            <span class="score-pill">Site: <strong id="score-site">0</strong></span>
+                            <span class="score-pill">Draws: <strong id="score-draw">0</strong></span>
+                        </div>
+                    </div>
+                    <div class="ttt-panel">
+                        <p id="ttt-status" class="ttt-status" aria-live="polite">Your turn.</p>
+                        <div class="ttt-grid" role="grid" aria-label="Tic-tac-toe board">
+                            <button class="ttt-cell" type="button" data-cell="0" aria-label="Cell 1"></button>
+                            <button class="ttt-cell" type="button" data-cell="1" aria-label="Cell 2"></button>
+                            <button class="ttt-cell" type="button" data-cell="2" aria-label="Cell 3"></button>
+                            <button class="ttt-cell" type="button" data-cell="3" aria-label="Cell 4"></button>
+                            <button class="ttt-cell" type="button" data-cell="4" aria-label="Cell 5"></button>
+                            <button class="ttt-cell" type="button" data-cell="5" aria-label="Cell 6"></button>
+                            <button class="ttt-cell" type="button" data-cell="6" aria-label="Cell 7"></button>
+                            <button class="ttt-cell" type="button" data-cell="7" aria-label="Cell 8"></button>
+                            <button class="ttt-cell" type="button" data-cell="8" aria-label="Cell 9"></button>
+                        </div>
+                        <div class="ttt-actions button-row">
+                            <button class="button secondary" type="button" id="ttt-reset">Reset board</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="project-columns">
-                <article class="media-card">
-                    <span class="label">Radmule Labs</span>
-                    <h3>YouTube gameplay / trailer</h3>
-                    <p>
-                        This section now uses the available Radmule Labs YouTube video, and it can later expand with more gameplay clips from other shipped projects.
-                    </p>
-                    <div class="showcase-screen">
-                        <iframe
-                            src="https://www.youtube.com/embed/bpxCqTPN2e0"
-                            title="Radmule Labs gameplay trailer"
-                            loading="lazy"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin"
-                            allowfullscreen></iframe>
-                    </div>
-                </article>
-                <article class="section-card">
-                    <span class="label">Why this helps</span>
-                    <ul class="detail-list">
-                        <li>Shows actual shipped work instead of a placeholder reel block.</li>
-                        <li>Keeps the homepage ready for more videos as new links become available.</li>
-                        <li>Pairs well with store links so visitors can quickly compare projects.</li>
-                    </ul>
-                    <div class="button-row mt-18">
-                        <a class="button primary" href="https://www.youtube.com/watch?v=bpxCqTPN2e0" target="_blank" rel="noopener noreferrer">Open YouTube</a>
-                        <a class="button secondary" href="#experience">See More Experience</a>
-                    </div>
-                </article>
             </div>
         </section>
 
         <section id="about" class="reveal" aria-labelledby="about-title">
             <div class="section-header">
                 <div>
-                    <h2 id="about-title" class="section-title">About Me</h2>
-                    <p class="section-lead">I enjoy building systems where simple rules create complex gameplay. Puzzle design is where that obsession feels most rewarding.</p>
+                    <h2 id="about-title" class="section-title">About</h2>
+                    <p class="section-lead">I enjoy work that looks simple on the surface because the underlying decisions are doing their job.</p>
                 </div>
             </div>
             <div class="panel">
                 <p>
-                    I like games that stay elegant under the hood: clear inputs, understandable systems, and enough structure to keep surprising the player.
-                    My process usually starts with the rules, then the solver, then the layer that makes it feel alive on screen. The result I chase is simple:
-                    gameplay that feels obvious once you touch it, but keeps revealing depth the longer you stay with it.
+                    My process usually starts with the rule set, then moves into validation, feel, and presentation.
+                    I care about whether a feature reads clearly, responds well, and remains maintainable after the first version ships.
                 </p>
             </div>
         </section>
@@ -1078,23 +895,25 @@
             <div class="section-header">
                 <div>
                     <h2 id="contact-title" class="section-title">Contact</h2>
-                    <p class="section-lead">Open to puzzle, systems, and mobile gameplay conversations.</p>
+                    <p class="section-lead">Open to game development, puzzle design, and mobile production conversations.</p>
                 </div>
             </div>
             <div class="contact-grid">
                 <article class="contact-card">
                     <span class="label">Email</span>
                     <h3>alpalkim@gmail.com</h3>
-                    <p>Best for business inquiries, collaboration, and portfolio conversations.</p>
-                    <a class="button secondary mt-16" href="mailto:alpalkim@gmail.com">Send Email</a>
+                    <p>Best for business inquiries, collaboration, and portfolio discussions.</p>
+                    <div class="button-row">
+                        <a class="button primary" href="mailto:alpalkim@gmail.com">Send email</a>
+                    </div>
                 </article>
                 <article class="contact-card">
-                    <span class="label">Profiles</span>
-                    <h3>GitHub &amp; YouTube</h3>
-                    <p>Browse code-related work or open the Radmule Labs video directly from here.</p>
-                    <div class="button-row mt-16">
+                    <span class="label">Professional links</span>
+                    <h3>GitHub and resume</h3>
+                    <p>Source code, portfolio updates, and a downloadable resume in one place.</p>
+                    <div class="button-row">
                         <a class="button secondary" href="https://github.com/alpalkim" target="_blank" rel="noopener noreferrer">GitHub</a>
-                        <a class="button secondary" href="https://www.youtube.com/watch?v=bpxCqTPN2e0" target="_blank" rel="noopener noreferrer">YouTube</a>
+                        <a class="button secondary" href="/assets/alp-alkim-resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
                     </div>
                 </article>
             </div>
@@ -1111,14 +930,26 @@
             const year = document.getElementById("year");
             const navToggle = document.querySelector(".nav-toggle");
             const navLinks = document.getElementById("main-nav");
-            const FEATURED_ART_PATH = "/assets/word-game-2026-icon.svg";
             const REVEAL_THRESHOLD = 0.18;
+            const SITE_MOVE_DELAY = 220;
             const mobileMediaQuery = window.matchMedia("(max-width: 768px)");
+            const tttCells = Array.from(document.querySelectorAll(".ttt-cell"));
+            const tttStatus = document.getElementById("ttt-status");
+            const tttReset = document.getElementById("ttt-reset");
+            const scorePlayer = document.getElementById("score-player");
+            const scoreSite = document.getElementById("score-site");
+            const scoreDraw = document.getElementById("score-draw");
+            const winningLines = [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8],
+                [0, 3, 6], [1, 4, 7], [2, 5, 8],
+                [0, 4, 8], [2, 4, 6]
+            ];
+
+            let board = Array(9).fill("");
+            let siteThinking = false;
+            const scores = { player: 0, site: 0, draw: 0 };
 
             year.textContent = new Date().getFullYear();
-            document.querySelectorAll("[data-featured-art]").forEach(function (image) {
-                image.src = FEATURED_ART_PATH;
-            });
 
             const linkLabels = {
                 play: "App Store",
@@ -1165,10 +996,10 @@
                 return [
                     '<article class="card featured-card" tabindex="0">',
                         image
-                            ? '<img class="game-image" src="' + escapeHtml(image) + '" alt="' + escapeHtml(game.title || "game") + ' cover" loading="lazy" />'
+                            ? '<img class="game-image" src="' + escapeHtml(image) + '" alt="' + escapeHtml(game.title || "game") + ' artwork" loading="lazy" />'
                             : '<div class="game-image" role="img" aria-label="Placeholder image for ' + escapeHtml(game.title || "game") + '"></div>',
                         '<div class="card-body">',
-                            '<span class="status-pill">Featured App Store Release</span>',
+                            '<span class="status-pill">Released on the App Store</span>',
                             '<h3>' + escapeHtml(game.title || "Untitled Game") + '</h3>',
                             '<p>' + escapeHtml(game.description || "") + '</p>',
                             '<div class="tags">' + tags + '</div>',
@@ -1221,10 +1052,142 @@
 
             mobileMediaQuery.addEventListener("change", function (event) {
                 if (!event.matches) {
-                    navLinks.classList.remove("is-open");
-                    navToggle.setAttribute("aria-expanded", "false");
+                    closeMenu();
                 }
             });
+
+            function findWinner(state) {
+                for (const line of winningLines) {
+                    const [a, b, c] = line;
+                    if (state[a] && state[a] === state[b] && state[a] === state[c]) {
+                        return state[a];
+                    }
+                }
+                return "";
+            }
+
+            function updateScores() {
+                scorePlayer.textContent = String(scores.player);
+                scoreSite.textContent = String(scores.site);
+                scoreDraw.textContent = String(scores.draw);
+            }
+
+            function renderBoard() {
+                const winner = findWinner(board);
+                const draw = !winner && board.every(Boolean);
+                tttCells.forEach(function (cell, index) {
+                    const mark = board[index];
+                    cell.textContent = mark;
+                    cell.dataset.mark = mark;
+                    cell.disabled = Boolean(mark) || Boolean(winner) || draw || siteThinking;
+                    cell.setAttribute("aria-label", mark ? 'Cell ' + (index + 1) + ', ' + mark : 'Cell ' + (index + 1));
+                });
+            }
+
+            function setStatus(message) {
+                tttStatus.textContent = message;
+            }
+
+            function pickBestMove(mark) {
+                for (const line of winningLines) {
+                    const marks = line.map(function (index) { return board[index]; });
+                    const ownCount = marks.filter(function (value) { return value === mark; }).length;
+                    const emptyIndex = line.find(function (index) { return !board[index]; });
+                    if (ownCount === 2 && emptyIndex !== undefined) {
+                        return emptyIndex;
+                    }
+                }
+                return -1;
+            }
+
+            function chooseSiteMove() {
+                const winningMove = pickBestMove("O");
+                if (winningMove >= 0) return winningMove;
+
+                const blockingMove = pickBestMove("X");
+                if (blockingMove >= 0) return blockingMove;
+
+                if (!board[4]) return 4;
+
+                const preferredMoves = [0, 2, 6, 8, 1, 3, 5, 7];
+                return preferredMoves.find(function (index) {
+                    return !board[index];
+                });
+            }
+
+            function finishRound(result) {
+                if (result === "X") {
+                    scores.player += 1;
+                    setStatus("You win.");
+                } else if (result === "O") {
+                    scores.site += 1;
+                    setStatus("The site wins this round.");
+                } else {
+                    scores.draw += 1;
+                    setStatus("Draw.");
+                }
+                updateScores();
+                siteThinking = false;
+                renderBoard();
+            }
+
+            function tryEndRound() {
+                const winner = findWinner(board);
+                if (winner) {
+                    finishRound(winner);
+                    return true;
+                }
+                if (board.every(Boolean)) {
+                    finishRound("draw");
+                    return true;
+                }
+                return false;
+            }
+
+            function resetBoard(message) {
+                board = Array(9).fill("");
+                siteThinking = false;
+                setStatus(message || "Your turn.");
+                renderBoard();
+            }
+
+            tttCells.forEach(function (cell) {
+                cell.addEventListener("click", function () {
+                    const index = Number(cell.dataset.cell);
+                    if (board[index] || siteThinking) {
+                        return;
+                    }
+
+                    board[index] = "X";
+                    renderBoard();
+                    if (tryEndRound()) {
+                        return;
+                    }
+
+                    siteThinking = true;
+                    setStatus("The site is thinking…");
+                    renderBoard();
+
+                    window.setTimeout(function () {
+                        const move = chooseSiteMove();
+                        if (move !== undefined && move >= 0) {
+                            board[move] = "O";
+                        }
+                        siteThinking = false;
+                        renderBoard();
+                        if (!tryEndRound()) {
+                            setStatus("Your turn.");
+                        }
+                    }, SITE_MOVE_DELAY);
+                });
+            });
+
+            tttReset.addEventListener("click", function () {
+                resetBoard("Board reset. Your turn.");
+            });
+
+            resetBoard("Your turn.");
+            updateScores();
 
             const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
             if (!reducedMotion && "IntersectionObserver" in window) {
