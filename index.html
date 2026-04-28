@@ -107,6 +107,8 @@
 
         .nav-toggle {
             display: none;
+            align-items: center;
+            justify-content: center;
             width: 46px;
             height: 46px;
             border-radius: 14px;
@@ -928,8 +930,8 @@
             const year = document.getElementById("year");
             const navToggle = document.querySelector(".nav-toggle");
             const navLinks = document.getElementById("main-nav");
-            const FEATURED_ART_PATH = "/assets/colorful-words-cover.svg";
             const REVEAL_THRESHOLD = 0.18;
+            const SITE_MOVE_DELAY = 220;
             const mobileMediaQuery = window.matchMedia("(max-width: 768px)");
             const tttCells = Array.from(document.querySelectorAll(".ttt-cell"));
             const tttStatus = document.getElementById("ttt-status");
@@ -948,9 +950,6 @@
             const scores = { player: 0, site: 0, draw: 0 };
 
             year.textContent = new Date().getFullYear();
-            document.querySelectorAll("[data-featured-art]").forEach(function (image) {
-                image.src = FEATURED_ART_PATH;
-            });
 
             const linkLabels = {
                 play: "App Store",
@@ -1179,7 +1178,7 @@
                         if (!tryEndRound()) {
                             setStatus("Your turn.");
                         }
-                    }, 220);
+                    }, SITE_MOVE_DELAY);
                 });
             });
 
