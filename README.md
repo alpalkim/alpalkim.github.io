@@ -10,7 +10,6 @@ Personal website for ALP ALKIM.
   - Featured games section rendered from JSON data
 - **Games Data Source**: `/data/games.json`
   - Manage game cards from a single file
-- **Support/Contact**: `/support.html`
 - **Privacy Policy**:
   - `/scoreblastprivacypolicy.html`
   - `/privacy-policy/word-reveal.html`
@@ -49,9 +48,3 @@ Use empty values (`""`) for unavailable links.
 ## Deployment
 
 This site is compatible with GitHub Pages (static files, no build required).
-
-For Netlify Forms integration on `/support.html`:
-
-1. Deploy to Netlify (or configure GitHub Pages + Netlify)
-2. Netlify detects forms with `data-netlify="true"`
-3. Configure email notifications in Netlify dashboard
