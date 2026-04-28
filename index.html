@@ -32,7 +32,7 @@
             --container: 1160px;
             --radius: 22px;
             --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
-            --featured-art: url("/assets/colorful-words-cover.svg");
+            --featured-art: url("https://github.com/user-attachments/assets/f9eecd67-0e7d-4708-826e-c4ba6a8b6c77");
         }
 
         * { box-sizing: border-box; }
@@ -585,6 +585,13 @@
             object-fit: cover;
         }
 
+        .showcase-screen iframe {
+            width: 100%;
+            display: block;
+            aspect-ratio: 16 / 9;
+            border: 0;
+        }
+
         .detail-grid,
         .cards-grid,
         .article-grid,
@@ -763,7 +770,7 @@
             <nav id="main-nav" class="nav-links" aria-label="Main navigation">
                 <a href="#projects">Projects</a>
                 <a href="#skills">Skills</a>
-                <a href="#writing">Writing</a>
+                <a href="#experience">Experience</a>
                 <a href="#systems">Systems</a>
                 <a href="#showcase">Showcase</a>
                 <a href="#about">About</a>
@@ -893,7 +900,7 @@
                                 <li><strong>Platform:</strong> iOS</li>
                                 <li><strong>Format:</strong> Mobile puzzle / short sessions</li>
                                 <li><strong>Live link:</strong> <a class="link-inline" href="https://apps.apple.com/tr/app/colorful-words-reveal-puzzle/id6761399233" target="_blank" rel="noopener noreferrer">Open App Store page</a></li>
-                                <li><strong>Support:</strong> <a class="link-inline" href="/support.html">Contact form</a></li>
+                                <li><strong>Video:</strong> <a class="link-inline" href="https://www.youtube.com/watch?v=bpxCqTPN2e0" target="_blank" rel="noopener noreferrer">Watch the Radmule Labs trailer</a></li>
                             </ul>
                         </div>
                     </div>
@@ -935,33 +942,41 @@
             </div>
         </section>
 
-        <section id="writing" class="reveal" aria-labelledby="writing-title">
+        <section id="experience" class="reveal" aria-labelledby="experience-title">
             <div class="section-header">
                 <div>
-                    <h2 id="writing-title" class="section-title">Deep Technical Writing</h2>
-                    <p class="section-lead">The goal here is to show engineering thinking behind the games: generation, solver logic, retention systems, and performance trade-offs.</p>
+                    <h2 id="experience-title" class="section-title">Studio Experience</h2>
+                    <p class="section-lead">A quick view of shipped mobile work, QA experience, and previous teams that shaped how I build and test games.</p>
                 </div>
             </div>
             <div class="article-grid">
                 <article class="article-card">
-                    <span class="label">Planned article</span>
-                    <h3>How I Built a Solvable Puzzle Generator in Unity</h3>
-                    <p>Explaining generation constraints, validation passes, and why puzzle fairness depends on solver-aware tooling.</p>
+                    <span class="label">Wixot</span>
+                    <h3>Shipped mobile puzzle titles</h3>
+                    <p>I worked on multiple casual and puzzle-focused mobile releases, helping bring polished word and brain-training experiences to market.</p>
+                    <ul class="detail-list mt-16">
+                        <li><a class="link-inline" href="https://apps.apple.com/tr/app/word-solitaire-connections/id6755479591" target="_blank" rel="noopener noreferrer">Word Solitaire Connections</a></li>
+                        <li><a class="link-inline" href="https://apps.apple.com/tr/app/kelimix/id6747683712" target="_blank" rel="noopener noreferrer">Kelimix</a></li>
+                        <li><a class="link-inline" href="https://apps.apple.com/tr/app/crossword-colorful/id6744316896" target="_blank" rel="noopener noreferrer">Crossword Colorful</a></li>
+                        <li><a class="link-inline" href="https://apps.apple.com/tr/app/robin-brain-training/id6502344994" target="_blank" rel="noopener noreferrer">Robin Brain Training</a></li>
+                        <li><a class="link-inline" href="https://play.google.com/store/apps/details?id=com.wixot.wordsearch&amp;hl=en" target="_blank" rel="noopener noreferrer">Wixot Word Search</a></li>
+                    </ul>
                 </article>
                 <article class="article-card">
-                    <span class="label">Planned article</span>
-                    <h3>Designing a Daily Puzzle System with Streak Mechanics</h3>
-                    <p>Breaking down reward loops, session cadence, and how to keep a daily system motivating without overwhelming the player.</p>
+                    <span class="label">STCPay</span>
+                    <h3>QA at a scaling fintech product</h3>
+                    <p>I worked in QA at STCPay during a major growth phase, contributing to product quality while the company became a unicorn and later evolved into a bank.</p>
                 </article>
                 <article class="article-card">
-                    <span class="label">Planned article</span>
-                    <h3>Optimizing Unity Instantiations for Puzzle Content</h3>
-                    <p>A performance-focused case study around pooling, UI refresh costs, and keeping puzzle interactions snappy on mobile.</p>
+                    <span class="label">Radmule Labs</span>
+                    <h3>Playable trailer available</h3>
+                    <p>For the Radmule Labs project, the public-facing material is currently a YouTube video that captures the game direction and presentation.</p>
+                    <a class="button secondary mt-16" href="https://www.youtube.com/watch?v=bpxCqTPN2e0" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
                 </article>
                 <article class="article-card">
-                    <span class="label">Themes</span>
-                    <h3>What these posts will cover</h3>
-                    <p>Solver logic, grid systems, daily content pipelines, and the engineering decisions that make small puzzle games scale well.</p>
+                    <span class="label">Focus</span>
+                    <h3>What carries across teams</h3>
+                    <p>Across games and QA work, I care most about player-facing polish, reliable systems, and shipping features that stay stable under real production pressure.</p>
                 </article>
             </div>
         </section>
@@ -997,9 +1012,9 @@
                 </article>
                 <article class="system-card">
                     <span class="label">Showcase area</span>
-                    <h3>Video / reel slot</h3>
-                    <p>A dedicated 30–60 second reel area is ready to support future gameplay clips, feature callouts, or a YouTube embed when available.</p>
-                    <a class="button secondary" href="https://apps.apple.com/tr/app/colorful-words-reveal-puzzle/id6761399233" target="_blank" rel="noopener noreferrer">See the live game</a>
+                    <h3>Portfolio video support</h3>
+                    <p>The homepage now includes a live YouTube embed and still leaves room to add more gameplay clips or short reels over time.</p>
+                    <a class="button secondary" href="#showcase">Open the video section</a>
                 </article>
             </div>
         </section>
@@ -1007,31 +1022,37 @@
         <section id="showcase" class="reveal" aria-labelledby="showcase-title">
             <div class="section-header">
                 <div>
-                    <h2 id="showcase-title" class="section-title">Video / Showcase Area</h2>
-                    <p class="section-lead">A dedicated reel section for short-form highlights, gameplay beats, and system callouts that can later be swapped with a real trailer or YouTube embed.</p>
+                    <h2 id="showcase-title" class="section-title">Video Showcase</h2>
+                    <p class="section-lead">A live embed makes it easier to share gameplay quickly while keeping room for more videos later.</p>
                 </div>
             </div>
             <div class="project-columns">
                 <article class="media-card">
-                    <span class="label">Showreel slot</span>
-                    <h3>30–60 second portfolio reel</h3>
+                    <span class="label">Radmule Labs</span>
+                    <h3>YouTube gameplay / trailer</h3>
                     <p>
-                        The layout now supports a compact showcase block for puzzle footage, highlight captions, or a future embedded video without changing the rest of the homepage structure.
+                        This section now uses the available Radmule Labs YouTube video, and it can later expand with more gameplay clips from other shipped projects.
                     </p>
                     <div class="showcase-screen">
-                        <img data-featured-art alt="Portfolio showcase placeholder for Colorful Words reel" loading="lazy" />
+                        <iframe
+                            src="https://www.youtube.com/embed/bpxCqTPN2e0"
+                            title="Radmule Labs gameplay trailer"
+                            loading="lazy"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen></iframe>
                     </div>
                 </article>
                 <article class="section-card">
-                    <span class="label">Recommended clip flow</span>
+                    <span class="label">Why this helps</span>
                     <ul class="detail-list">
-                        <li>Quick hook with the puzzle board and reveal effect.</li>
-                        <li>Mid-section callouts for solver-backed generation and daily loop structure.</li>
-                        <li>Finish with App Store CTA and contact details for recruiters or collaborators.</li>
+                        <li>Shows actual shipped work instead of a placeholder reel block.</li>
+                        <li>Keeps the homepage ready for more videos as new links become available.</li>
+                        <li>Pairs well with store links so visitors can quickly compare projects.</li>
                     </ul>
                     <div class="button-row mt-18">
-                        <a class="button primary" href="https://apps.apple.com/tr/app/colorful-words-reveal-puzzle/id6761399233" target="_blank" rel="noopener noreferrer">Open App Store</a>
-                        <a class="button secondary" href="#contact">Contact Me</a>
+                        <a class="button primary" href="https://www.youtube.com/watch?v=bpxCqTPN2e0" target="_blank" rel="noopener noreferrer">Open YouTube</a>
+                        <a class="button secondary" href="#experience">See More Experience</a>
                     </div>
                 </article>
             </div>
@@ -1053,23 +1074,6 @@
             </div>
         </section>
 
-        <section id="resume" class="reveal" aria-labelledby="resume-title">
-            <div class="section-header">
-                <div>
-                    <h2 id="resume-title" class="section-title">Resume</h2>
-                    <p class="section-lead">A concise PDF version is available for recruiters, collaborators, and anyone who wants the quick overview.</p>
-                </div>
-            </div>
-            <div class="resume-card">
-                <h3>Downloadable PDF</h3>
-                <p>Grab a short resume with focus areas, featured work, and contact details.</p>
-                <div class="button-row mt-18">
-                    <a class="button primary" href="/assets/alp-alkim-resume.pdf" download>Download Resume PDF</a>
-                    <a class="button secondary" href="mailto:alpalkim@gmail.com">Request full CV</a>
-                </div>
-            </div>
-        </section>
-
         <section id="contact" class="reveal" aria-labelledby="contact-title">
             <div class="section-header">
                 <div>
@@ -1086,11 +1090,11 @@
                 </article>
                 <article class="contact-card">
                     <span class="label">Profiles</span>
-                    <h3>GitHub &amp; support</h3>
-                    <p>Browse code-related work or use the support form for app-specific questions.</p>
+                    <h3>GitHub &amp; YouTube</h3>
+                    <p>Browse code-related work or open the Radmule Labs video directly from here.</p>
                     <div class="button-row mt-16">
                         <a class="button secondary" href="https://github.com/alpalkim" target="_blank" rel="noopener noreferrer">GitHub</a>
-                        <a class="button secondary" href="/support.html">Support Form</a>
+                        <a class="button secondary" href="https://www.youtube.com/watch?v=bpxCqTPN2e0" target="_blank" rel="noopener noreferrer">YouTube</a>
                     </div>
                 </article>
             </div>
@@ -1107,7 +1111,7 @@
             const year = document.getElementById("year");
             const navToggle = document.querySelector(".nav-toggle");
             const navLinks = document.getElementById("main-nav");
-            const FEATURED_ART_PATH = "/assets/colorful-words-cover.svg";
+            const FEATURED_ART_PATH = "https://github.com/user-attachments/assets/f9eecd67-0e7d-4708-826e-c4ba6a8b6c77";
             const REVEAL_THRESHOLD = 0.18;
             const mobileMediaQuery = window.matchMedia("(max-width: 768px)");
 
