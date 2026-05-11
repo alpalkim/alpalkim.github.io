@@ -15,5 +15,93 @@
       "itch": "",
       "steam": ""
     }
+  },
+  {
+    "title": "Word Solitaire Connections",
+    "description": "Word puzzle game focused on retention and progression systems.",
+    "tech": [
+      "Unity",
+      "C#",
+      "iOS",
+      "Retention",
+      "Progression"
+    ],
+    "image": "",
+    "links": {
+      "play": "https://apps.apple.com/tr/app/word-solitaire-connections/id6755479591",
+      "github": "",
+      "itch": "",
+      "steam": ""
+    }
+  },
+  {
+    "title": "Kelimix",
+    "description": "Turkish word puzzle game with live content and progression mechanics.",
+    "tech": [
+      "Unity",
+      "C#",
+      "iOS",
+      "LiveOps",
+      "Turkish"
+    ],
+    "image": "",
+    "links": {
+      "play": "https://apps.apple.com/tr/app/kelimix/id6747683712",
+      "github": "",
+      "itch": "",
+      "steam": ""
+    }
+  },
+  {
+    "title": "Crossword Colorful",
+    "description": "Crossword-style mobile puzzle experience.",
+    "tech": [
+      "Unity",
+      "C#",
+      "iOS",
+      "Crossword"
+    ],
+    "image": "",
+    "links": {
+      "play": "https://apps.apple.com/tr/app/crossword-colorful/id6744316896",
+      "github": "",
+      "itch": "",
+      "steam": ""
+    }
+  },
+  {
+    "title": "Robin Brain Training",
+    "description": "Brain training and puzzle collection focused on engagement.",
+    "tech": [
+      "Unity",
+      "C#",
+      "iOS",
+      "Brain Training"
+    ],
+    "image": "",
+    "links": {
+      "play": "https://apps.apple.com/tr/app/robin-brain-training/id6502344994",
+      "github": "",
+      "itch": "",
+      "steam": ""
+    }
+  },
+  {
+    "title": "Word Search",
+    "description": "Live word game with large-scale player engagement and analytics.",
+    "tech": [
+      "Unity",
+      "C#",
+      "Android",
+      "Analytics",
+      "LiveOps"
+    ],
+    "image": "",
+    "links": {
+      "play": "https://play.google.com/store/apps/details?id=com.wixot.wordsearch&hl=en",
+      "github": "",
+      "itch": "",
+      "steam": ""
+    }
   }
 ]
