@@ -583,6 +583,13 @@
             font-size: 0.95rem;
         }
 
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
         .reveal {
             opacity: 0;
             transform: translateY(18px);
@@ -914,6 +921,7 @@
                     <div class="button-row">
                         <a class="button secondary" href="https://github.com/alpalkim" target="_blank" rel="noopener noreferrer">GitHub</a>
                         <a class="button secondary" href="/assets/alp-alkim-resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+                        <a class="button secondary" href="/privacy-policy.html">Privacy Policy</a>
                     </div>
                 </article>
             </div>
@@ -921,7 +929,10 @@
     </main>
 
     <footer class="container footer">
-        © <span id="year"></span> ALP ALKIM. Built for GitHub Pages.
+        <div>© <span id="year"></span> ALP ALKIM. Built for GitHub Pages.</div>
+        <div class="footer-links">
+            <a class="link-inline" href="/privacy-policy.html">Privacy Policy</a>
+        </div>
     </footer>
 
     <script>
@@ -999,216 +1010,214 @@
                             ? '<img class="game-image" src="' + escapeHtml(image) + '" alt="' + escapeHtml(game.title || "game") + ' artwork" loading="lazy" />'
                             : '<div class="game-image" role="img" aria-label="Placeholder image for ' + escapeHtml(game.title || "game") + '"></div>',
                         '<div class="card-body">',
-                            '<span class="status-pill">Released on the App Store</span>',
-                            '<h3>' + escapeHtml(game.title || "Untitled Game") + '</h3>',
+                            '<span class="label">Featured game</span>',
+                            '<h3>' + escapeHtml(game.title || "Untitled project") + '</h3>',
                             '<p>' + escapeHtml(game.description || "") + '</p>',
-                            '<div class="tags">' + tags + '</div>',
-                            '<div class="game-links">' + (linkHtml || '<span class="status-pill">Link coming soon</span>') + '</div>',
+                            tags ? '<div class="tags">' + tags + '</div>' : '',
+                            linkHtml ? '<div class="game-links">' + linkHtml + '</div>' : '' ,
                         '</div>',
                     '</article>'
                 ].join("");
             }
 
-            fetch("/data/games.json")
-                .then(function (res) {
-                    if (!res.ok) {
-                        const err = new Error("Games data could not be loaded");
-                        err.status = res.status;
-                        throw err;
-                    }
-                    return res.json();
-                })
-                .then(function (games) {
-                    if (!Array.isArray(games)) {
-                        throw new Error("Invalid games data");
-                    }
-                    grid.innerHTML = games.map(gameCardTemplate).join("");
-                })
-                .catch(function (error) {
-                    if (error && error.status) {
-                        console.error("Games data fetch failed with status:", error.status);
-                    }
-                    grid.innerHTML = '<div class="panel">Could not load games right now. Please try again later.</div>';
-                });
+            function renderGames(games) {
+                if (!grid) return;
+                const items = Array.isArray(games) ? games : [];
+                grid.innerHTML = items.length
+                    ? items.map(gameCardTemplate).join("")
+                    : '<div class="panel"><p>Project data will appear here soon.</p></div>';
+            }
 
-            function closeMenu() {
+            function closeNav() {
+                if (!navToggle || !navLinks) return;
                 navToggle.setAttribute("aria-expanded", "false");
                 navLinks.classList.remove("is-open");
             }
 
-            navToggle.addEventListener("click", function () {
-                const expanded = navToggle.getAttribute("aria-expanded") === "true";
-                navToggle.setAttribute("aria-expanded", String(!expanded));
-                navLinks.classList.toggle("is-open", !expanded);
-            });
-
-            navLinks.querySelectorAll("a").forEach(function (link) {
-                link.addEventListener("click", function () {
-                    if (mobileMediaQuery.matches) {
-                        closeMenu();
-                    }
+            if (navToggle && navLinks) {
+                navToggle.addEventListener("click", function () {
+                    const expanded = navToggle.getAttribute("aria-expanded") === "true";
+                    navToggle.setAttribute("aria-expanded", String(!expanded));
+                    navLinks.classList.toggle("is-open", !expanded);
                 });
-            });
 
-            mobileMediaQuery.addEventListener("change", function (event) {
-                if (!event.matches) {
-                    closeMenu();
-                }
-            });
+                navLinks.querySelectorAll("a").forEach(function (link) {
+                    link.addEventListener("click", function () {
+                        if (mobileMediaQuery.matches) closeNav();
+                    });
+                });
 
-            function findWinner(state) {
+                window.addEventListener("resize", function () {
+                    if (!mobileMediaQuery.matches) closeNav();
+                });
+            }
+
+            const revealNodes = Array.from(document.querySelectorAll(".reveal"));
+            if ("IntersectionObserver" in window) {
+                const revealObserver = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("is-visible");
+                            revealObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: REVEAL_THRESHOLD });
+
+                revealNodes.forEach(function (node) {
+                    revealObserver.observe(node);
+                });
+            } else {
+                revealNodes.forEach(function (node) {
+                    node.classList.add("is-visible");
+                });
+            }
+
+            function updateScoreboard() {
+                scorePlayer.textContent = scores.player;
+                scoreSite.textContent = scores.site;
+                scoreDraw.textContent = scores.draw;
+            }
+
+            function evaluateBoard(currentBoard) {
                 for (const line of winningLines) {
                     const [a, b, c] = line;
-                    if (state[a] && state[a] === state[b] && state[a] === state[c]) {
-                        return state[a];
+                    if (currentBoard[a] && currentBoard[a] === currentBoard[b] && currentBoard[a] === currentBoard[c]) {
+                        return { winner: currentBoard[a], line: line };
                     }
                 }
-                return "";
-            }
-
-            function updateScores() {
-                scorePlayer.textContent = String(scores.player);
-                scoreSite.textContent = String(scores.site);
-                scoreDraw.textContent = String(scores.draw);
-            }
-
-            function renderBoard() {
-                const winner = findWinner(board);
-                const draw = !winner && board.every(Boolean);
-                tttCells.forEach(function (cell, index) {
-                    const mark = board[index];
-                    cell.textContent = mark;
-                    cell.dataset.mark = mark;
-                    cell.disabled = Boolean(mark) || Boolean(winner) || draw || siteThinking;
-                    cell.setAttribute("aria-label", mark ? 'Cell ' + (index + 1) + ', ' + mark : 'Cell ' + (index + 1));
-                });
+                if (currentBoard.every(Boolean)) return { winner: "draw", line: [] };
+                return null;
             }
 
             function setStatus(message) {
                 tttStatus.textContent = message;
             }
 
-            function pickBestMove(mark) {
-                for (const line of winningLines) {
-                    const marks = line.map(function (index) { return board[index]; });
-                    const ownCount = marks.filter(function (value) { return value === mark; }).length;
-                    const emptyIndex = line.find(function (index) { return !board[index]; });
-                    if (ownCount === 2 && emptyIndex !== undefined) {
-                        return emptyIndex;
-                    }
-                }
-                return -1;
-            }
-
-            function chooseSiteMove() {
-                const winningMove = pickBestMove("O");
-                if (winningMove >= 0) return winningMove;
-
-                const blockingMove = pickBestMove("X");
-                if (blockingMove >= 0) return blockingMove;
-
-                if (!board[4]) return 4;
-
-                const preferredMoves = [0, 2, 6, 8, 1, 3, 5, 7];
-                return preferredMoves.find(function (index) {
-                    return !board[index];
+            function updateBoardUI() {
+                tttCells.forEach(function (cell, index) {
+                    const mark = board[index];
+                    cell.textContent = mark;
+                    cell.dataset.mark = mark;
+                    cell.disabled = Boolean(mark) || siteThinking || Boolean(evaluateBoard(board));
                 });
             }
 
             function finishRound(result) {
-                if (result === "X") {
+                if (!result) return;
+                if (result.winner === "X") {
                     scores.player += 1;
-                    setStatus("You win.");
-                } else if (result === "O") {
+                    setStatus("You win this round.");
+                } else if (result.winner === "O") {
                     scores.site += 1;
-                    setStatus("The site wins this round.");
+                    setStatus("Site wins this round.");
                 } else {
                     scores.draw += 1;
-                    setStatus("Draw.");
+                    setStatus("Draw game.");
                 }
-                updateScores();
                 siteThinking = false;
-                renderBoard();
+                updateScoreboard();
+                updateBoardUI();
             }
 
-            function tryEndRound() {
-                const winner = findWinner(board);
-                if (winner) {
-                    finishRound(winner);
-                    return true;
+            function chooseSiteMove() {
+                const emptyIndexes = board
+                    .map(function (value, index) { return value ? null : index; })
+                    .filter(function (value) { return value !== null; });
+
+                for (const index of emptyIndexes) {
+                    const next = board.slice();
+                    next[index] = "O";
+                    if (evaluateBoard(next)?.winner === "O") return index;
                 }
-                if (board.every(Boolean)) {
-                    finishRound("draw");
-                    return true;
+
+                for (const index of emptyIndexes) {
+                    const next = board.slice();
+                    next[index] = "X";
+                    if (evaluateBoard(next)?.winner === "X") return index;
                 }
-                return false;
+
+                if (emptyIndexes.includes(4)) return 4;
+
+                const corners = [0, 2, 6, 8].filter(function (index) {
+                    return emptyIndexes.includes(index);
+                });
+                if (corners.length) return corners[Math.floor(Math.random() * corners.length)];
+
+                return emptyIndexes[0];
             }
 
-            function resetBoard(message) {
+            function siteMove() {
+                const move = chooseSiteMove();
+                if (typeof move !== "number") return;
+                board[move] = "O";
+                const result = evaluateBoard(board);
+                if (result) {
+                    finishRound(result);
+                } else {
+                    siteThinking = false;
+                    setStatus("Your turn.");
+                    updateBoardUI();
+                }
+            }
+
+            function handlePlayerMove(event) {
+                const cell = event.currentTarget;
+                const index = Number(cell.dataset.cell);
+                if (board[index] || siteThinking || evaluateBoard(board)) return;
+
+                board[index] = "X";
+                const result = evaluateBoard(board);
+                if (result) {
+                    finishRound(result);
+                    return;
+                }
+
+                siteThinking = true;
+                setStatus("Site is thinking...");
+                updateBoardUI();
+                window.setTimeout(siteMove, SITE_MOVE_DELAY);
+            }
+
+            function resetBoard() {
                 board = Array(9).fill("");
                 siteThinking = false;
-                setStatus(message || "Your turn.");
-                renderBoard();
+                setStatus("Your turn.");
+                updateBoardUI();
             }
 
             tttCells.forEach(function (cell) {
-                cell.addEventListener("click", function () {
-                    const index = Number(cell.dataset.cell);
-                    if (board[index] || siteThinking) {
-                        return;
-                    }
-
-                    board[index] = "X";
-                    renderBoard();
-                    if (tryEndRound()) {
-                        return;
-                    }
-
-                    siteThinking = true;
-                    setStatus("The site is thinking…");
-                    renderBoard();
-
-                    window.setTimeout(function () {
-                        const move = chooseSiteMove();
-                        if (move !== undefined && move >= 0) {
-                            board[move] = "O";
-                        }
-                        siteThinking = false;
-                        renderBoard();
-                        if (!tryEndRound()) {
-                            setStatus("Your turn.");
-                        }
-                    }, SITE_MOVE_DELAY);
-                });
+                cell.addEventListener("click", handlePlayerMove);
             });
 
-            tttReset.addEventListener("click", function () {
-                resetBoard("Board reset. Your turn.");
-            });
-
-            resetBoard("Your turn.");
-            updateScores();
-
-            const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-            if (!reducedMotion && "IntersectionObserver" in window) {
-                const observer = new IntersectionObserver(function (entries) {
-                    entries.forEach(function (entry) {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add("is-visible");
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: REVEAL_THRESHOLD });
-
-                document.querySelectorAll(".reveal").forEach(function (el) {
-                    observer.observe(el);
-                });
-            } else {
-                document.querySelectorAll(".reveal").forEach(function (el) {
-                    el.classList.add("is-visible");
-                });
+            if (tttReset) {
+                tttReset.addEventListener("click", resetBoard);
             }
-        })();
+
+            updateScoreboard();
+            resetBoard();
+
+            fetch("/data/games.json")
+                .then(function (response) {
+                    if (!response.ok) throw new Error("Failed to load game data");
+                    return response.json();
+                })
+                .then(function (data) {
+                    renderGames(data.games);
+                })
+                .catch(function () {
+                    renderGames([
+                        {
+                            title: "Colorful Words: Reveal Puzzle",
+                            description: "A live mobile puzzle release with a focus on readable boards, smooth sessions, and dependable production support.",
+                            tech: ["Unity", "C#", "Mobile UX"],
+                            image: "/assets/colorful-words-cover.svg",
+                            links: {
+                                play: "https://apps.apple.com/tr/app/colorful-words-reveal-puzzle/id6761399233"
+                            }
+                        }
+                    ]);
+                });
+        }());
     </script>
 </body>
 </html>
